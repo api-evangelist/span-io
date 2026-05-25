@@ -1,0 +1,46 @@
+extends: [[spectral:oas, all]]
+rules:
+  # SPAN paths are versioned at /api/v1/
+  span-paths-versioned:
+    description: All SPAN REST paths must begin with /api/v1/.
+    severity: warn
+    given: "$.paths"
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        match: "^/api/v1/"
+  # SPAN uses kebab-case for path segments
+  span-paths-kebab-case:
+    description: SPAN path segments use kebab-case (lowercase with hyphens).
+    severity: warn
+    given: "$.paths"
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        match: "^/api/v1(/[a-z0-9-]+|/\\{[a-zA-Z_]+\\})*$"
+  # SPAN endpoints use HTTP Bearer JWT authentication
+  span-bearer-security:
+    description: SPAN OpenAPI must declare HTTPBearer security scheme.
+    severity: error
+    given: "$.components.securitySchemes"
+    then:
+      field: HTTPBearer
+      function: truthy
+  # Operations should be tagless-but-summarized
+  span-operation-summary:
+    description: SPAN operations must have a summary.
+    severity: warn
+    given: "$.paths.*[get,post,put,delete,patch]"
+    then:
+      field: summary
+      function: truthy
+  # JSON-only API
+  span-json-only:
+    description: SPAN responses are application/json.
+    severity: warn
+    given: "$.paths.*[get,post,put,delete,patch].responses.*.content"
+    then:
+      field: "application/json"
+      function: truthy

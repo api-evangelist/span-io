@@ -1,0 +1,52 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "energy": "https://w3id.org/energy/",
+    "homie": "https://homieiot.github.io/specification/",
+    "ebus": "https://ebus.energy/",
+    "span": "https://www.span.io/ns#",
+
+    "SmartPanel": "span:SmartPanel",
+    "Panel": "span:Panel",
+    "Circuit": "span:Circuit",
+    "Branch": "span:Branch",
+    "MainMeter": "span:MainMeter",
+    "GridRelay": "span:GridRelay",
+    "EnergyStorage": "span:EnergyStorage",
+    "SpanDrive": "span:SpanDrive",
+    "WifiAccessPoint": "span:WifiAccessPoint",
+
+    "serialNumber": "schema:serialNumber",
+    "firmwareVersion": "schema:softwareVersion",
+    "name": "schema:name",
+    "description": "schema:description",
+
+    "instantPowerW": {
+      "@id": "energy:instantPower",
+      "@type": "xsd:decimal"
+    },
+    "consumedEnergyWh": {
+      "@id": "energy:consumedEnergy",
+      "@type": "xsd:decimal"
+    },
+    "producedEnergyWh": {
+      "@id": "energy:producedEnergy",
+      "@type": "xsd:decimal"
+    },
+    "stateOfEnergy": "energy:stateOfCharge",
+    "niceToHaveThreshold": "span:niceToHaveThreshold",
+
+    "relayState": "span:relayState",
+    "priority": "span:priority",
+    "islandingState": "span:islandingState",
+
+    "circuits": {
+      "@id": "span:hasCircuit",
+      "@container": "@set"
+    },
+    "branches": {
+      "@id": "span:hasBranch",
+      "@container": "@set"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+apiVersion: capabilities.naftiko.dev/v1
+kind: Capability
+metadata:
+  name: span-storage
+  title: SPAN Energy Storage
+  provider: span-io
+  api: span-rest-api
+  tags:
+    - Energy Storage
+    - Batteries
+    - State of Energy
+spec:
+  description: >-
+    Read and set energy storage state-of-energy (SoE) and nice-to-have
+    thresholds that control when SPAN Panel sheds non-essential loads during
+    islanded operation to preserve battery reserve.
+  operations:
+    - id: get-storage-soe
+      summary: Get energy storage state-of-energy.
+      method: GET
+      path: /api/v1/storage/soe
+    - id: set-storage-soe
+      summary: Set energy storage state-of-energy (test / commissioning).
+      method: POST
+      path: /api/v1/storage/soe
+    - id: get-nice-to-have-threshold
+      summary: Get the nice-to-have shedding threshold.
+      method: GET
+      path: /api/v1/storage/nice-to-have-thresh
+    - id: set-nice-to-have-threshold
+      summary: Set the nice-to-have shedding threshold.
+      method: POST
+      path: /api/v1/storage/nice-to-have-thresh

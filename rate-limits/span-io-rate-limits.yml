@@ -1,0 +1,47 @@
+apiVersion: api-commons/rate-limits/0.1
+kind: RateLimits
+metadata:
+  provider: span-io
+  source:
+    - https://github.com/spanio/SPAN-API-Client-Docs
+  updated: '2026-05-25'
+description: >-
+  SPAN API is hosted directly on SPAN Panel — a constrained embedded device
+  on the home LAN. SPAN does not publish formal per-request rate limits.
+  Practical limits are dictated by the panel's CPU, memory, and the embedded
+  MQTT broker's connection capacity. SPAN's documentation strongly
+  RECOMMENDS that clients use the MQTT publish/subscribe surface for
+  high-frequency telemetry rather than polling REST endpoints in tight loops.
+policies:
+  - id: rest-polling-guidance
+    surface: REST
+    type: client-guidance
+    description: >-
+      No documented hard rate limit. Clients SHOULD avoid polling panel state
+      / circuits at high frequency; use MQTT subscriptions for streaming
+      telemetry. Bursty REST traffic on the panel may degrade responsiveness
+      of the SPAN Home apps.
+    recommendation: >-
+      Poll at most once per 1–5 seconds for any single REST resource;
+      subscribe to the MQTT pub/sub surface for sub-second telemetry.
+  - id: mqtt-streaming
+    surface: MQTT
+    type: connection-capacity
+    description: >-
+      The panel-hosted MQTT broker has a finite connection capacity. Each
+      registered API client SHOULD use a single long-lived MQTT connection
+      rather than repeatedly reconnecting.
+    recommendation: >-
+      Maintain a single persistent MQTT/MQTTS or WSS connection per API
+      client; reuse the connection across all subscriptions.
+  - id: auth-registration
+    surface: REST
+    type: per-resource
+    description: >-
+      Client registration (POST /api/v1/auth/register) is a setup-time
+      operation. There is no published quota but clients SHOULD register
+      exactly once per integration and persist the returned JWT.
+notes: >-
+  Because SPAN API runs on-premise and is LAN-only, traditional cloud
+  rate-limit headers (X-RateLimit-*) are not emitted. Backpressure manifests
+  as elevated latency or, in extreme cases, dropped MQTT connections.

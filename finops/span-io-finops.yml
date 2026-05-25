@@ -1,0 +1,52 @@
+apiVersion: api-commons/finops/0.1
+kind: FinOps
+metadata:
+  provider: span-io
+  framework: FinOps Foundation / FOCUS 1.0 (adapted)
+  source:
+    - https://github.com/spanio/SPAN-API-Client-Docs
+    - https://www.span.io/smart-panel-product
+  updated: '2026-05-25'
+description: >-
+  SPAN API does not generate per-request consumption charges. The
+  cost surface is the underlying physical SPAN Panel and any commercial
+  Fleet Manager / Utilities subscription. API consumption is included with
+  panel ownership. This document is provided for completeness; SPAN's API
+  has no metered billing dimensions to align with FOCUS.
+billable-dimensions:
+  - id: panel-hardware
+    label: SPAN Panel Hardware
+    type: one-time-capital
+    description: >-
+      SPAN Panel is sold as installed hardware by certified electricians.
+      Pricing varies by model (MAIN 32, MAIN 16, MAIN 40, MLO 24, MLO 48) and
+      installation complexity. Hardware purchase grants on-premise API access.
+    metric: device
+    cadence: one-time
+  - id: fleet-manager-license
+    label: SPAN Fleet Manager License
+    type: subscription
+    description: >-
+      Commercial licensing for fleet / multi-site programmatic access.
+      Pricing is custom — contact SPAN sales.
+    metric: site
+    cadence: custom
+  - id: utilities-derms
+    label: SPAN Utilities DERMS
+    type: subscription
+    description: >-
+      Utility-grade DERMS platform pricing — custom contracted.
+    metric: enrolled-panel
+    cadence: custom
+focus-mapping:
+  ServiceCategory: Energy / IoT
+  ServiceName: SPAN Panel
+  BilledCost: not-applicable
+  ListUnitPrice: hardware (one-time) + fleet license (custom)
+  UsageQuantity: not-metered-at-api-layer
+  UsageUnit: not-applicable
+  ChargeCategory: Hardware + (optional) Subscription
+notes: >-
+  Personal SPAN API usage is included with SPAN Panel ownership and is
+  free to use. Organizations should plan for SPAN Fleet Manager licensing
+  in any FinOps allocation model touching SPAN.

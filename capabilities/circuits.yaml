@@ -1,0 +1,31 @@
+apiVersion: capabilities.naftiko.dev/v1
+kind: Capability
+metadata:
+  name: span-circuits
+  title: SPAN Circuits
+  provider: span-io
+  api: span-rest-api
+  tags:
+    - Circuits
+    - Relay Control
+    - Power
+    - Energy
+spec:
+  description: >-
+    Enumerate circuits attached to SPAN Panel, read per-circuit telemetry,
+    rename circuits, set priority groups (e.g. MUST_HAVE / NICE_TO_HAVE /
+    NON_ESSENTIAL), and operate per-circuit relays for remote energization
+    and load shedding.
+  operations:
+    - id: list-circuits
+      summary: List all circuits with their current state and power.
+      method: GET
+      path: /api/v1/circuits
+    - id: get-circuit
+      summary: Get a single circuit's state.
+      method: GET
+      path: /api/v1/circuits/{circuitId}
+    - id: set-circuit
+      summary: Set a circuit's name, priority, or relay state.
+      method: POST
+      path: /api/v1/circuits/{circuitId}

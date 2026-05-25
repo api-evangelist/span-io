@@ -1,0 +1,24 @@
+apiVersion: capabilities.naftiko.dev/v1
+kind: Capability
+metadata:
+  name: span-wifi
+  title: SPAN Wi-Fi
+  provider: span-io
+  api: span-rest-api
+  tags:
+    - Wi-Fi
+    - Networking
+    - On-Premise
+spec:
+  description: >-
+    Discover nearby Wi-Fi access points and connect SPAN Panel to a Wi-Fi
+    network. Used during commissioning and re-provisioning of network access.
+  operations:
+    - id: wifi-scan
+      summary: Scan for nearby Wi-Fi access points.
+      method: GET
+      path: /api/v1/wifi/scan
+    - id: wifi-connect
+      summary: Connect SPAN Panel to a Wi-Fi access point.
+      method: POST
+      path: /api/v1/wifi/connect

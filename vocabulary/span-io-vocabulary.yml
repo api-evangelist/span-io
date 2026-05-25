@@ -1,0 +1,109 @@
+vocabulary:
+  name: SPAN Vocabulary
+  provider: span-io
+  description: >-
+    Normative vocabulary for SPAN Panel and the SPAN API. Maps SPAN-specific
+    domain terms to broader home-energy, smart-grid, and IoT concepts and to
+    schema.org / Homie / eBus equivalents where applicable.
+  version: "1.0"
+  terms:
+    - id: panel
+      label: SPAN Panel
+      definition: >-
+        A software-defined residential electrical service panel that replaces
+        a traditional breaker box. Provides whole-home and per-circuit
+        metering and remote relay control.
+      relatedTo:
+        - schema:ElectricalService
+        - homie:device
+
+    - id: circuit
+      label: Circuit
+      definition: >-
+        A single electrical branch served by SPAN Panel, named and assigned a
+        priority group. Each circuit has its own relay, power telemetry, and
+        cumulative energy registers.
+      relatedTo:
+        - homie:node
+
+    - id: branch
+      label: Branch
+      definition: >-
+        The physical hardware connection point on SPAN Panel; one or more
+        branches feed a logical circuit.
+
+    - id: main-meter
+      label: Main Meter
+      definition: >-
+        SPAN Panel's whole-home revenue-class energy meter; tracks produced
+        (export) and consumed (import) energy registers.
+
+    - id: grid-relay
+      label: Grid Relay
+      definition: >-
+        The main relay that connects or disconnects SPAN Panel from the
+        utility grid. Controlled via /api/v1/panel/grid and used to switch
+        into / out of islanded operation.
+
+    - id: islanding-state
+      label: Islanding State
+      definition: >-
+        Whether SPAN Panel is operating grid-tied or in island (off-grid)
+        mode. Critical state for backup operation with solar + storage.
+      values:
+        - GRID_TIED
+        - ISLANDED
+        - TRANSITIONING
+
+    - id: priority
+      label: Circuit Priority
+      definition: >-
+        Load-shedding priority assigned to a circuit. Determines order of
+        shedding during islanded operation as battery state-of-energy falls.
+      values:
+        - MUST_HAVE
+        - NICE_TO_HAVE
+        - NON_ESSENTIAL
+
+    - id: state-of-energy
+      label: State of Energy (SoE)
+      definition: >-
+        Battery state of charge expressed as a percentage. Drives
+        nice-to-have shedding thresholds during islanded operation.
+      relatedTo:
+        - energy:stateOfCharge
+
+    - id: nice-to-have-threshold
+      label: Nice-to-Have Threshold
+      definition: >-
+        Battery SoE below which SPAN Panel will shed NICE_TO_HAVE circuits.
+
+    - id: span-drive
+      label: SPAN Drive
+      definition: >-
+        SPAN's Level 2 EV charger that integrates with SPAN Panel for
+        coordinated load management and dynamic charging.
+
+    - id: ebus
+      label: Electrification Bus (eBus)
+      definition: >-
+        Open integration framework for home-energy devices that specifies
+        Homie topic and payload conventions over MQTT.
+      relatedTo:
+        - ebus:Framework
+
+    - id: homie
+      label: Homie Convention
+      definition: >-
+        Open MQTT topic and payload convention for IoT devices; specifies the
+        $state, $description, and node/property structure used by SPAN's
+        publish/subscribe surface.
+      relatedTo:
+        - homie:specification
+
+    - id: api-client
+      label: API Client
+      definition: >-
+        A named credential registered against SPAN Panel and granted a JWT
+        bearer token. Tokens authorize both REST calls and MQTT broker
+        connections.

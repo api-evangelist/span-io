@@ -1,0 +1,77 @@
+apiVersion: api-commons/plans/0.1
+kind: Plans
+metadata:
+  provider: span-io
+  source:
+    - https://github.com/spanio/SPAN-API-Client-Docs
+    - https://www.span.io/blog/introducing-span-api-and-span-home-on-premise-public-beta
+    - https://www.span.io/utilities
+  updated: '2026-05-25'
+description: >-
+  SPAN does not sell the SPAN API as a metered cloud service. SPAN's commercial
+  surface is the SPAN Panel hardware itself (installed via certified
+  electricians) and SPAN's commercial Fleet Manager / Utilities offerings.
+  The on-premise SPAN API is included free with SPAN Panel firmware for
+  personal, non-commercial use under MIT-0 documentation licensing.
+plans:
+  - id: span-api-personal
+    name: SPAN API (Personal, On-Premise)
+    audience: Homeowner / developer
+    price:
+      label: Included
+      amount: 0
+      currency: USD
+      cadence: included-with-panel
+    description: >-
+      Local SPAN API access included with SPAN Panel for personal,
+      non-commercial use by the panel owner or developers granted access on
+      the home LAN. Includes REST and MQTT/Homie interfaces. No commercial
+      use, fleet management, or multi-site aggregation permitted.
+    features:
+      - Full REST API access
+      - Full MQTT/Homie pub-sub access
+      - Reference scripts and example code (MIT-0)
+      - GitHub Issues + Discussions community support
+    constraints:
+      - Personal, non-commercial use only
+      - Local LAN only — no cloud surface
+      - Backward compatibility is not guaranteed (public beta)
+      - SPAN API is provided "AS IS"; no warranty or support SLA
+    availability:
+      panels:
+        - MAIN 32 (firmware r202603+, available Q1 2026)
+        - MAIN 16, MLO 24, MAIN 40, MLO 48 (planned H2 2026)
+  - id: span-fleet-manager
+    name: SPAN Fleet Manager
+    audience: Commercial / Utility / DERMS operator
+    price:
+      label: Contact Sales
+      amount: null
+      currency: USD
+      cadence: custom
+    description: >-
+      Separately licensed commercial offering for organizations and utilities
+      requiring programmatic access to SPAN Panel data across many homes
+      (fleet management, multi-site aggregation, demand response, DERMS).
+      Required for any commercial use of SPAN data.
+    features:
+      - Multi-site / fleet aggregation
+      - Programmatic data access for commercial use
+      - Utility / DERMS integration
+      - Enterprise support
+    contact:
+      url: https://www.span.io/contact
+  - id: span-utilities
+    name: SPAN Utilities (DERMS)
+    audience: Utility partner
+    price:
+      label: Custom
+      amount: null
+      currency: USD
+      cadence: custom
+    description: >-
+      SPAN's distributed-energy-resource management platform for utility
+      partners, providing aggregated visibility and orchestration of SPAN
+      Panels across a service territory.
+    contact:
+      url: https://www.span.io/utilities

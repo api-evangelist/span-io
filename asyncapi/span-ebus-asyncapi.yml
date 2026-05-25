@@ -1,0 +1,249 @@
+asyncapi: 2.6.0
+info:
+  title: SPAN eBus MQTT API
+  version: r202615
+  description: |
+    Publish/subscribe streaming API hosted directly on SPAN Panel using the
+    Electrification Bus (eBus) integration framework and the Homie Convention
+    for MQTT topic and payload structure. SPAN Panel hosts an MQTT broker
+    available over MQTTS (TLS), WS, and WSS exclusively on the home LAN.
+
+    Topic structure follows the Homie pattern `ebus/5/<device-id>/<node-id>/<property-id>`
+    where device-id is the SPAN Panel serial number. Clients can read all
+    `ebus/#` topics and publish to Homie `/set` topics to control panel state.
+  license:
+    name: MIT-0
+    url: https://github.com/spanio/SPAN-API-Client-Docs/blob/main/LICENSE
+  contact:
+    name: SPAN API GitHub Discussions
+    url: https://github.com/spanio/SPAN-API-Client-Docs/discussions
+servers:
+  panel-mqtts:
+    url: span-{serialNumber}.local:8883
+    protocol: mqtts
+    description: SPAN Panel MQTT broker over TLS (preferred for native MQTT clients).
+    variables:
+      serialNumber:
+        description: The SPAN Panel serial number (e.g. ab-1234-c5d67).
+        default: ab-1234-c5d67
+    security:
+      - userPassword: []
+  panel-wss:
+    url: span-{serialNumber}.local:8884
+    protocol: wss
+    description: SPAN Panel MQTT broker over Secure WebSockets (for browser-based clients).
+    variables:
+      serialNumber:
+        description: The SPAN Panel serial number.
+        default: ab-1234-c5d67
+    security:
+      - userPassword: []
+defaultContentType: application/json
+channels:
+  ebus/5/{serial}/$state:
+    description: Homie device lifecycle state for the SPAN Panel.
+    parameters:
+      serial:
+        $ref: '#/components/parameters/serial'
+    subscribe:
+      operationId: subscribePanelState
+      summary: Subscribe to SPAN Panel Homie lifecycle state.
+      message:
+        $ref: '#/components/messages/HomieState'
+  ebus/5/{serial}/$description:
+    description: Homie device description (full panel + node + property schema).
+    parameters:
+      serial:
+        $ref: '#/components/parameters/serial'
+    subscribe:
+      operationId: subscribePanelDescription
+      summary: Subscribe to the panel's Homie $description schema.
+      message:
+        $ref: '#/components/messages/HomieDescription'
+  ebus/5/{serial}/panel/power:
+    description: Real-time whole-home power telemetry from the panel.
+    parameters:
+      serial:
+        $ref: '#/components/parameters/serial'
+    subscribe:
+      operationId: subscribePanelPower
+      summary: Stream real-time whole-home power values.
+      message:
+        $ref: '#/components/messages/PanelPower'
+  ebus/5/{serial}/panel/meter:
+    description: Real-time main meter energy register values.
+    parameters:
+      serial:
+        $ref: '#/components/parameters/serial'
+    subscribe:
+      operationId: subscribePanelMeter
+      summary: Stream main meter cumulative energy registers.
+      message:
+        $ref: '#/components/messages/PanelMeter'
+  ebus/5/{serial}/panel/grid:
+    description: Main grid relay state.
+    parameters:
+      serial:
+        $ref: '#/components/parameters/serial'
+    subscribe:
+      operationId: subscribeGridState
+      summary: Stream grid / main relay state changes.
+      message:
+        $ref: '#/components/messages/RelayState'
+  ebus/5/{serial}/panel/grid/set:
+    description: Control topic to set the main grid relay state (open or closed).
+    parameters:
+      serial:
+        $ref: '#/components/parameters/serial'
+    publish:
+      operationId: setGridState
+      summary: Publish a desired grid relay state.
+      message:
+        $ref: '#/components/messages/RelayStateSet'
+  ebus/5/{serial}/panel/islanding-state:
+    description: Whole-home islanding state — grid-tied vs islanded operation.
+    parameters:
+      serial:
+        $ref: '#/components/parameters/serial'
+    subscribe:
+      operationId: subscribeIslandingState
+      summary: Stream islanding state transitions.
+      message:
+        $ref: '#/components/messages/IslandingState'
+  ebus/5/{serial}/circuits/{circuitId}/power:
+    description: Per-circuit real-time power telemetry.
+    parameters:
+      serial:
+        $ref: '#/components/parameters/serial'
+      circuitId:
+        description: Opaque circuit identifier.
+        schema:
+          type: string
+    subscribe:
+      operationId: subscribeCircuitPower
+      summary: Stream per-circuit real-time power.
+      message:
+        $ref: '#/components/messages/CircuitPower'
+  ebus/5/{serial}/circuits/{circuitId}/relay-state:
+    description: Per-circuit relay state.
+    parameters:
+      serial:
+        $ref: '#/components/parameters/serial'
+      circuitId:
+        schema:
+          type: string
+    subscribe:
+      operationId: subscribeCircuitRelayState
+      summary: Stream per-circuit relay state changes.
+      message:
+        $ref: '#/components/messages/RelayState'
+  ebus/5/{serial}/circuits/{circuitId}/relay-state/set:
+    description: Control topic to set a per-circuit relay state.
+    parameters:
+      serial:
+        $ref: '#/components/parameters/serial'
+      circuitId:
+        schema:
+          type: string
+    publish:
+      operationId: setCircuitRelayState
+      summary: Publish a desired per-circuit relay state.
+      message:
+        $ref: '#/components/messages/RelayStateSet'
+  ebus/5/{serial}/storage/soe:
+    description: Energy storage state-of-energy (battery percentage).
+    parameters:
+      serial:
+        $ref: '#/components/parameters/serial'
+    subscribe:
+      operationId: subscribeStorageSoe
+      summary: Stream energy storage state-of-energy updates.
+      message:
+        $ref: '#/components/messages/StateOfEnergy'
+components:
+  parameters:
+    serial:
+      description: The SPAN Panel serial number (Homie device-id).
+      schema:
+        type: string
+        pattern: '^[a-z0-9-]+$'
+  messages:
+    HomieState:
+      name: HomieState
+      title: Homie Device Lifecycle State
+      contentType: text/plain
+      payload:
+        type: string
+        enum: [init, ready, disconnected, sleeping, lost, alert]
+    HomieDescription:
+      name: HomieDescription
+      title: Homie $description schema for the device
+      payload:
+        $ref: 'https://homieiot.github.io/specification/#device-attributes'
+    PanelPower:
+      name: PanelPower
+      title: Panel Power
+      payload:
+        type: object
+        properties:
+          instantGridPowerW:
+            type: number
+          feedthroughPowerW:
+            type: number
+    PanelMeter:
+      name: PanelMeter
+      title: Panel Meter Energy Registers
+      payload:
+        type: object
+        properties:
+          producedEnergyWh:
+            type: number
+          consumedEnergyWh:
+            type: number
+    RelayState:
+      name: RelayState
+      title: Relay State
+      payload:
+        type: string
+        enum: [OPEN, CLOSED, UNKNOWN]
+    RelayStateSet:
+      name: RelayStateSet
+      title: Relay State (set)
+      payload:
+        type: string
+        enum: [OPEN, CLOSED]
+    IslandingState:
+      name: IslandingState
+      title: Islanding State
+      payload:
+        type: string
+        enum: [GRID_TIED, ISLANDED, TRANSITIONING, UNKNOWN]
+    CircuitPower:
+      name: CircuitPower
+      title: Circuit Power
+      payload:
+        type: object
+        properties:
+          instantPowerW:
+            type: number
+          producedEnergyWh:
+            type: number
+          consumedEnergyWh:
+            type: number
+    StateOfEnergy:
+      name: StateOfEnergy
+      title: State of Energy
+      payload:
+        type: object
+        properties:
+          percentage:
+            type: number
+            minimum: 0
+            maximum: 100
+  securitySchemes:
+    userPassword:
+      type: userPassword
+      description: >-
+        MQTT broker authentication. Username is the SPAN Panel serial number,
+        password is the broker passphrase returned by the REST authentication
+        endpoint `POST /api/v1/auth/register`.
