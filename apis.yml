@@ -1,25 +1,18 @@
 aid: span-io
 name: SPAN
 description: >-
-  SPAN is a San Francisco-based home energy technology company building smart
-  electrical panels that replace traditional residential breaker boxes with a
-  software-defined, controllable, and metered panel. SPAN Panel provides
-  whole-home real-time power and energy metering, per-circuit monitoring and
-  remote relay control, grid/islanding state management for whole-home backup
-  with solar and energy storage, EV charging coordination via SPAN Drive, and
-  a mobile app for energy management. As of the SPAN Panel firmware r202603
-  release (Q1 2026), SPAN exposes a public-beta on-premise SPAN API for
-  software integrations between SPAN Panel and other devices on the home Local
-  Area Network. The SPAN API is a real, documented HTTP + MQTT/Homie surface
-  that runs directly on the panel — there is no cloud-hosted developer
-  endpoint. The REST surface provides authentication, system status, Wi-Fi
-  setup, panel state, per-circuit control, panel grid relay, energy storage
-  state-of-energy, and emergency reconnect operations. The publish/subscribe
-  surface uses the Electrification Bus (eBus) framework and Homie Convention
-  over MQTT for streaming real-time panel state, per-circuit telemetry, and
-  control of relays. SPAN API is licensed for personal, non-commercial use
-  under MIT-0 for docs and example code; commercial / fleet use requires the
-  separately licensed SPAN Fleet Manager.
+  SPAN is a San Francisco-based home energy technology company building smart electrical panels that replace traditional
+  residential breaker boxes with a software-defined, controllable, and metered panel. SPAN Panel provides whole-home
+  real-time power and energy metering, per-circuit monitoring and remote relay control, grid/islanding state management
+  for whole-home backup with solar and energy storage, EV charging coordination via SPAN Drive, and a mobile app for
+  energy management. As of the SPAN Panel firmware r202603 release (Q1 2026), SPAN exposes a public-beta on-premise SPAN
+  API for software integrations between SPAN Panel and other devices on the home Local Area Network. The SPAN API is a
+  real, documented HTTP + MQTT/Homie surface that runs directly on the panel — there is no cloud-hosted developer
+  endpoint. The REST surface provides authentication, system status, Wi-Fi setup, panel state, per-circuit control,
+  panel grid relay, energy storage state-of-energy, and emergency reconnect operations. The publish/subscribe surface
+  uses the Electrification Bus (eBus) framework and Homie Convention over MQTT for streaming real-time panel state,
+  per-circuit telemetry, and control of relays. SPAN API is licensed for personal, non-commercial use under MIT-0 for
+  docs and example code; commercial / fleet use requires the separately licensed SPAN Fleet Manager.
 type: Provider
 position: Provider
 access: 3rd-Party
@@ -51,16 +44,12 @@ apis:
   - aid: span-io:span-rest-api
     name: SPAN REST API
     description: >-
-      Local on-premise HTTP/JSON REST API hosted directly on SPAN Panel. The
-      API exposes authentication (registering API clients and obtaining JWT
-      access tokens), system status, Wi-Fi scan and connect, panel state, main
-      meter, panel power, islanding state, per-circuit control, panel grid
-      relay control, emergency reconnect, and energy storage state-of-energy
-      and nice-to-have thresholds. All access is local-only on the home LAN;
-      authentication uses HTTP Bearer JWT credentials minted by the panel
-      itself. Available initially on SPAN Panel MAIN 32 with firmware r202603
-      and later, with rollout to MAIN 16 / MLO 24 / MAIN 40 / MLO 48 planned
-      for the second half of 2026.
+      Local on-premise HTTP/JSON REST API hosted directly on SPAN Panel. The API exposes authentication (registering API
+      clients and obtaining JWT access tokens), system status, Wi-Fi scan and connect, panel state, main meter, panel
+      power, islanding state, per-circuit control, panel grid relay control, emergency reconnect, and energy storage
+      state-of-energy and nice-to-have thresholds. All access is local-only on the home LAN; authentication uses HTTP
+      Bearer JWT credentials minted by the panel itself. Available initially on SPAN Panel MAIN 32 with firmware r202603
+      and later, with rollout to MAIN 16 / MLO 24 / MAIN 40 / MLO 48 planned for the second half of 2026.
     humanURL: https://github.com/spanio/SPAN-API-Client-Docs
     baseURL: http://span-{serial-number}.local/api/v1
     tags:
@@ -86,29 +75,16 @@ apis:
         type: JSONSchema
       - url: json-ld/span-context.jsonld
         type: JSONLD
-      - url: capabilities/circuits.yaml
-        type: NaftikoCapability
-      - url: capabilities/panel.yaml
-        type: NaftikoCapability
-      - url: capabilities/storage.yaml
-        type: NaftikoCapability
-      - url: capabilities/auth.yaml
-        type: NaftikoCapability
-      - url: capabilities/wifi.yaml
-        type: NaftikoCapability
   - aid: span-io:span-ebus-mqtt-api
     name: SPAN eBus MQTT API
     description: >-
-      Publish/subscribe streaming API hosted on SPAN Panel using the
-      Electrification Bus (eBus) integration framework and the Homie
-      Convention. SPAN Panel hosts an MQTT broker accessible over MQTTS
-      (8883), WS, and WSS. Clients subscribe to `ebus/5/<serial>/...` topics
-      to receive real-time panel state, per-circuit telemetry, energy storage
-      state, and SPAN Drive integration data, and publish to `/set` topics to
-      operate relays and control panel state. The broker enforces topic-level
-      ACLs — full read access on `ebus/#`, write access limited to Homie
-      `/set` control topics and to non-panel device subtrees under `ebus/5/`.
-      Credentials are obtained via the REST authentication endpoint.
+      Publish/subscribe streaming API hosted on SPAN Panel using the Electrification Bus (eBus) integration framework
+      and the Homie Convention. SPAN Panel hosts an MQTT broker accessible over MQTTS (8883), WS, and WSS. Clients
+      subscribe to `ebus/5/<serial>/...` topics to receive real-time panel state, per-circuit telemetry, energy storage
+      state, and SPAN Drive integration data, and publish to `/set` topics to operate relays and control panel state.
+      The broker enforces topic-level ACLs — full read access on `ebus/#`, write access limited to Homie `/set` control
+      topics and to non-panel device subtrees under `ebus/5/`. Credentials are obtained via the REST authentication
+      endpoint.
     humanURL: https://github.com/spanio/SPAN-API-Client-Docs#span-api-interaction-models
     tags:
       - MQTT
@@ -130,8 +106,6 @@ apis:
         type: AsyncAPI
       - url: json-schema/span-homie-schema.json
         type: JSONSchema
-      - url: capabilities/ebus-telemetry.yaml
-        type: NaftikoCapability
 common:
   - type: Website
     url: https://www.span.io
@@ -215,12 +189,16 @@ common:
       - SPAN Home mobile and on-premise apps for energy management and monitoring
       - On-premise SPAN API hosted on the panel — REST + MQTT, LAN-only, no cloud
       - HTTP Bearer JWT authentication minted by the panel and bound to a named API client
-      - REST resources for circuits, panel state, panel grid relay, panel meter and power, islanding state, energy storage SoE and nice-to-have thresholds, Wi-Fi scan/connect, system status, emergency reconnect
+      - >-
+        REST resources for circuits, panel state, panel grid relay, panel meter and power, islanding state, energy
+        storage SoE and nice-to-have thresholds, Wi-Fi scan/connect, system status, emergency reconnect
       - MQTT pub/sub via the Electrification Bus (eBus) framework using the Homie Convention
       - mDNS-advertised local discovery (`_span._tcp`, `_span-api._tcp`, `_mqtt._tcp`) for zero-config integration
       - JSON Schema for Homie device descriptions and mDNS service records
       - Reference shell + Python scripts (span-discover, span-auth, span-curl, span-mqtt-sub, span-mdns-query)
-      - Public beta — initial firmware r202603 for SPAN Panel MAIN 32, rolling out to MAIN 16 / MLO 24 / MAIN 40 / MLO 48 in H2 2026
+      - >-
+        Public beta — initial firmware r202603 for SPAN Panel MAIN 32, rolling out to MAIN 16 / MLO 24 / MAIN 40 / MLO
+        48 in H2 2026
       - Commercial / fleet integrations served separately via SPAN Fleet Manager licensing
       - SPAN Utilities — distributed energy resource (DER) management platform for utility partners
     sources:

@@ -1,0 +1,443 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Span",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Generate Jwt",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/v1/auth/register",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        },
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Generate Jwt"
+    },
+    {
+      "info": {
+        "name": "Get All Clients",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/auth/clients",
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Get All Clients"
+    },
+    {
+      "info": {
+        "name": "Get Client",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/auth/clients/:name",
+        "params": [
+          {
+            "name": "name",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Get Client"
+    },
+    {
+      "info": {
+        "name": "Delete Client",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/api/v1/auth/clients/:name",
+        "params": [
+          {
+            "name": "name",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Delete Client"
+    },
+    {
+      "info": {
+        "name": "System Status",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/status",
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "System Status"
+    },
+    {
+      "info": {
+        "name": "Get Wifi Scan",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/wifi/scan",
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Get Wifi Scan"
+    },
+    {
+      "info": {
+        "name": "Run Wifi Connect",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/v1/wifi/connect",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        },
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Run Wifi Connect"
+    },
+    {
+      "info": {
+        "name": "Get Panel State",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/panel",
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Get Panel State"
+    },
+    {
+      "info": {
+        "name": "Get Islanding State",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/islanding-state",
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Get Islanding State"
+    },
+    {
+      "info": {
+        "name": "Get Main Relay State",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/panel/grid",
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Get Main Relay State"
+    },
+    {
+      "info": {
+        "name": "Set Main Relay State",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/v1/panel/grid",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        },
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Set Main Relay State"
+    },
+    {
+      "info": {
+        "name": "Get Panel Power",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/panel/power",
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Get Panel Power"
+    },
+    {
+      "info": {
+        "name": "Get Panel Meter",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/panel/meter",
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Get Panel Meter"
+    },
+    {
+      "info": {
+        "name": "Get Circuits",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/circuits",
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Get Circuits"
+    },
+    {
+      "info": {
+        "name": "Get Circuit State",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/circuits/:circuitId",
+        "params": [
+          {
+            "name": "circuitId",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Get Circuit State"
+    },
+    {
+      "info": {
+        "name": "Set Circuit State",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/v1/circuits/:circuitId",
+        "params": [
+          {
+            "name": "circuitId",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        },
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Set Circuit State"
+    },
+    {
+      "info": {
+        "name": "Deprecated Spaces Endpoint Stub",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/spaces/:spaces_id",
+        "params": [
+          {
+            "name": "spaces_id",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Deprecated Spaces Endpoint Stub"
+    },
+    {
+      "info": {
+        "name": "Deprecated Spaces Endpoint Stub",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/v1/spaces/:spaces_id",
+        "params": [
+          {
+            "name": "spaces_id",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Deprecated Spaces Endpoint Stub"
+    },
+    {
+      "info": {
+        "name": "Deprecated Spaces Endpoint Stub",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/spaces",
+        "params": [
+          {
+            "name": "spaces_id",
+            "value": "",
+            "type": "query"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Deprecated Spaces Endpoint Stub"
+    },
+    {
+      "info": {
+        "name": "Run Panel Emergency Reconnect",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/v1/panel/emergency-reconnect",
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Run Panel Emergency Reconnect"
+    },
+    {
+      "info": {
+        "name": "Get Storage Soe",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/storage/soe",
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Get Storage Soe"
+    },
+    {
+      "info": {
+        "name": "Set Storage Soe",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/v1/storage/soe",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        },
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Set Storage Soe"
+    },
+    {
+      "info": {
+        "name": "Get Storage Nice To Have Threshold",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/storage/nice-to-have-thresh",
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Get Storage Nice To Have Threshold"
+    },
+    {
+      "info": {
+        "name": "Set Storage Nice To Have Threshold",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/v1/storage/nice-to-have-thresh",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        },
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Set Storage Nice To Have Threshold"
+    }
+  ],
+  "bundled": true
+}
