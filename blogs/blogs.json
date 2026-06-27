@@ -3,16 +3,10 @@
   "feeds": [
     {
       "source": "https://www.span.io/blog",
-      "error": "HTTPError"
-    },
-    {
-      "source": "https://www.span.io/utilities",
-      "feed_url": "https://www.span.io/utilities",
-      "title": "",
       "saved": 0,
-      "method": "none"
+      "error": "HTTP 404 Not Found"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T13:12:30Z"
 }

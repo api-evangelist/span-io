@@ -141,7 +141,7 @@ common:
   - type: Repository
     url: https://github.com/spanio/SPAN-API-Client-Docs
     name: SPAN API Client Documentation
-  - type: Forum
+  - type: Forums
     url: https://github.com/spanio/SPAN-API-Client-Docs/discussions
     name: SPAN API GitHub Discussions
   - type: Issues
@@ -151,16 +151,16 @@ common:
   - type: License
     url: https://github.com/spanio/SPAN-API-Client-Docs/blob/main/LICENSE
     name: MIT-0 (Docs and example code)
-  - type: SDK
+  - type: SDKs
     url: https://github.com/SpanPanel/span-panel-api
     name: span-panel-api (Python, community)
-  - type: SDK
+  - type: SDKs
     url: https://github.com/SpanPanel/Span
     name: Home Assistant Integration (community)
-  - type: SDK
+  - type: SDKs
     url: https://github.com/SpanPanel/simulator
     name: SPAN Panel eBus Simulator (community)
-  - type: Tool
+  - type: Tools
     url: https://github.com/spanio/SPAN-API-Client-Docs/tree/main/scripts
     name: SPAN reference scripts (span-discover, span-auth, span-curl, span-mqtt-pub, span-mqtt-sub, span-mdns-query)
   - type: Twitter
