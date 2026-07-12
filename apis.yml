@@ -107,6 +107,12 @@ apis:
       - url: json-schema/span-homie-schema.json
         type: JSONSchema
 common:
+  - type: VulnerabilityDisclosure
+    url: security/span-io-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/span-io-domain-security.yml
+  - type: Authentication
+    url: authentication/span-io-authentication.yml
   - type: Website
     url: https://www.span.io
   - type: Portal
