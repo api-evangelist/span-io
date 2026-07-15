@@ -107,6 +107,8 @@ apis:
       - url: json-schema/span-homie-schema.json
         type: JSONSchema
 common:
+  - type: AgenticAccess
+    url: agentic-access/span-io-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/span-io-vulnerability-disclosure.yml
   - type: DomainSecurity
