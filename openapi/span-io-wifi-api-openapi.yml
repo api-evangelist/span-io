@@ -1,0 +1,170 @@
+openapi: 3.0.2
+info:
+  title: Span Auth Wifi API
+  description: Span Panel REST API
+  version: v1
+tags:
+- name: Wifi
+paths:
+  /api/v1/wifi/scan:
+    get:
+      summary: Get Wifi Scan
+      operationId: get_wifi_scan_api_v1_wifi_scan_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WifiScanOut'
+      security:
+      - HTTPBearer: []
+      tags:
+      - Wifi
+  /api/v1/wifi/connect:
+    post:
+      summary: Run Wifi Connect
+      operationId: run_wifi_connect_api_v1_wifi_connect_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WifiConnectIn'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WifiConnectOut'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - HTTPBearer: []
+      tags:
+      - Wifi
+components:
+  schemas:
+    WifiScanOut:
+      title: WifiScanOut
+      required:
+      - accessPoints
+      type: object
+      properties:
+        accessPoints:
+          title: Accesspoints
+          type: array
+          items:
+            $ref: '#/components/schemas/WifiAccessPoint'
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            type: string
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    WifiConnectOut:
+      title: WifiConnectOut
+      required:
+      - bssid
+      - ssid
+      - signal
+      - encrypted
+      - connected
+      - error
+      type: object
+      properties:
+        bssid:
+          title: Bssid
+          type: string
+        ssid:
+          title: Ssid
+          type: string
+        signal:
+          title: Signal
+          type: integer
+        encrypted:
+          title: Encrypted
+          type: boolean
+        connected:
+          title: Connected
+          type: boolean
+        error:
+          title: Error
+          type: string
+    WifiAccessPoint:
+      title: WifiAccessPoint
+      required:
+      - bssid
+      - ssid
+      - signal
+      - frequency
+      - encrypted
+      - connected
+      type: object
+      properties:
+        bssid:
+          title: Bssid
+          type: string
+        ssid:
+          title: Ssid
+          type: string
+        signal:
+          title: Signal
+          type: integer
+        frequency:
+          title: Frequency
+          type: string
+        encrypted:
+          title: Encrypted
+          type: boolean
+        connected:
+          title: Connected
+          type: boolean
+        error:
+          title: Error
+          type: string
+          default: ''
+    WifiConnectIn:
+      title: WifiConnectIn
+      required:
+      - ssid
+      - psk
+      type: object
+      properties:
+        ssid:
+          title: Ssid
+          type: string
+        psk:
+          title: Psk
+          type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer

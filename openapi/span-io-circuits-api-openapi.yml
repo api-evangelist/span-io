@@ -1,0 +1,250 @@
+openapi: 3.0.2
+info:
+  title: Span Auth Circuits API
+  description: Span Panel REST API
+  version: v1
+tags:
+- name: Circuits
+paths:
+  /api/v1/circuits:
+    get:
+      summary: Get Circuits
+      operationId: get_circuits_api_v1_circuits_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CircuitsOut'
+      security:
+      - HTTPBearer: []
+      tags:
+      - Circuits
+  /api/v1/circuits/{circuitId}:
+    get:
+      summary: Get Circuit State
+      operationId: get_circuit_state_api_v1_circuits__circuitId__get
+      parameters:
+      - required: true
+        schema:
+          title: Circuitid
+          type: string
+        name: circuitId
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Circuit'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - HTTPBearer: []
+      tags:
+      - Circuits
+    post:
+      summary: Set Circuit State
+      operationId: set_circuit_state_api_v1_circuits__circuitId__post
+      parameters:
+      - required: true
+        schema:
+          title: Circuitid
+          type: string
+        name: circuitId
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Body_set_circuit_state_api_v1_circuits__circuitId__post'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Circuit'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - HTTPBearer: []
+      tags:
+      - Circuits
+components:
+  schemas:
+    Body_set_circuit_state_api_v1_circuits__circuitId__post:
+      title: Body_set_circuit_state_api_v1_circuits__circuitId__post
+      type: object
+      properties:
+        relayStateIn:
+          $ref: '#/components/schemas/RelayStateIn'
+        priorityIn:
+          $ref: '#/components/schemas/PriorityIn'
+        circuitNameIn:
+          $ref: '#/components/schemas/CircuitNameIn'
+        userControllableIn:
+          $ref: '#/components/schemas/BooleanIn'
+        sheddableIn:
+          $ref: '#/components/schemas/BooleanIn'
+        neverBackupIn:
+          $ref: '#/components/schemas/BooleanIn'
+    BooleanIn:
+      title: BooleanIn
+      required:
+      - value
+      type: object
+      properties:
+        value:
+          title: Value
+          type: boolean
+    Circuit:
+      title: Circuit
+      required:
+      - id
+      - relayState
+      - instantPowerW
+      - instantPowerUpdateTimeS
+      - producedEnergyWh
+      - consumedEnergyWh
+      - energyAccumUpdateTimeS
+      - priority
+      - isUserControllable
+      - isSheddable
+      - isNeverBackup
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+        name:
+          title: Name
+          type: string
+        relayState:
+          $ref: '#/components/schemas/RelayState'
+        instantPowerW:
+          title: Instantpowerw
+          type: number
+        instantPowerUpdateTimeS:
+          title: Instantpowerupdatetimes
+          type: integer
+        producedEnergyWh:
+          title: Producedenergywh
+          type: number
+        consumedEnergyWh:
+          title: Consumedenergywh
+          type: number
+        energyAccumUpdateTimeS:
+          title: Energyaccumupdatetimes
+          type: integer
+        tabs:
+          title: Tabs
+          type: array
+          items:
+            type: integer
+        priority:
+          $ref: '#/components/schemas/Priority'
+        isUserControllable:
+          title: Isusercontrollable
+          type: boolean
+        isSheddable:
+          title: Issheddable
+          type: boolean
+        isNeverBackup:
+          title: Isneverbackup
+          type: boolean
+    CircuitNameIn:
+      title: CircuitNameIn
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+    Priority:
+      title: Priority
+      enum:
+      - UNKNOWN
+      - NON_ESSENTIAL
+      - NICE_TO_HAVE
+      - MUST_HAVE
+      type: string
+      description: An enumeration.
+    PriorityIn:
+      title: PriorityIn
+      required:
+      - priority
+      type: object
+      properties:
+        priority:
+          $ref: '#/components/schemas/Priority'
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            type: string
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    RelayState:
+      title: RelayState
+      enum:
+      - UNKNOWN
+      - OPEN
+      - CLOSED
+      type: string
+      description: An enumeration.
+    RelayStateIn:
+      title: RelayStateIn
+      required:
+      - relayState
+      type: object
+      properties:
+        relayState:
+          $ref: '#/components/schemas/RelayState'
+    CircuitsOut:
+      title: CircuitsOut
+      required:
+      - circuits
+      type: object
+      properties:
+        circuits:
+          title: Circuits
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Circuit'
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer

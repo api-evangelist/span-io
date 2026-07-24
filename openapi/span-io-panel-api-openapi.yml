@@ -1,0 +1,288 @@
+openapi: 3.0.2
+info:
+  title: Span Auth Panel API
+  description: Span Panel REST API
+  version: v1
+tags:
+- name: Panel
+paths:
+  /api/v1/panel:
+    get:
+      summary: Get Panel State
+      operationId: get_panel_state_api_v1_panel_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PanelState'
+      security:
+      - HTTPBearer: []
+      tags:
+      - Panel
+  /api/v1/panel/grid:
+    get:
+      summary: Get Main Relay State
+      operationId: get_main_relay_state_api_v1_panel_grid_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RelayStateOut'
+      security:
+      - HTTPBearer: []
+      tags:
+      - Panel
+    post:
+      summary: Set Main Relay State
+      operationId: set_main_relay_state_api_v1_panel_grid_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RelayStateIn'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - HTTPBearer: []
+      tags:
+      - Panel
+  /api/v1/panel/power:
+    get:
+      summary: Get Panel Power
+      operationId: get_panel_power_api_v1_panel_power_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PanelPower'
+      security:
+      - HTTPBearer: []
+      tags:
+      - Panel
+  /api/v1/panel/meter:
+    get:
+      summary: Get Panel Meter
+      operationId: get_panel_meter_api_v1_panel_meter_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PanelMeter'
+      security:
+      - HTTPBearer: []
+      tags:
+      - Panel
+  /api/v1/panel/emergency-reconnect:
+    post:
+      summary: Run Panel Emergency Reconnect
+      operationId: run_panel_emergency_reconnect_api_v1_panel_emergency_reconnect_post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+      - HTTPBearer: []
+      tags:
+      - Panel
+components:
+  schemas:
+    MainMeterEnergy:
+      title: MainMeterEnergy
+      required:
+      - producedEnergyWh
+      - consumedEnergyWh
+      type: object
+      properties:
+        producedEnergyWh:
+          title: Producedenergywh
+          type: number
+        consumedEnergyWh:
+          title: Consumedenergywh
+          type: number
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            type: string
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    FeedthroughEnergy:
+      title: FeedthroughEnergy
+      required:
+      - producedEnergyWh
+      - consumedEnergyWh
+      type: object
+      properties:
+        producedEnergyWh:
+          title: Producedenergywh
+          type: number
+        consumedEnergyWh:
+          title: Consumedenergywh
+          type: number
+    PanelState:
+      title: PanelState
+      required:
+      - mainRelayState
+      - mainMeterEnergy
+      - instantGridPowerW
+      - feedthroughPowerW
+      - feedthroughEnergy
+      - gridSampleStartMs
+      - gridSampleEndMs
+      - dsmGridState
+      - dsmState
+      - currentRunConfig
+      - branches
+      type: object
+      properties:
+        mainRelayState:
+          $ref: '#/components/schemas/RelayState'
+        mainMeterEnergy:
+          $ref: '#/components/schemas/MainMeterEnergy'
+        instantGridPowerW:
+          title: Instantgridpowerw
+          type: number
+        feedthroughPowerW:
+          title: Feedthroughpowerw
+          type: number
+        feedthroughEnergy:
+          $ref: '#/components/schemas/FeedthroughEnergy'
+        gridSampleStartMs:
+          title: Gridsamplestartms
+          type: integer
+        gridSampleEndMs:
+          title: Gridsampleendms
+          type: integer
+        dsmGridState:
+          title: Dsmgridstate
+          type: string
+        dsmState:
+          title: Dsmstate
+          type: string
+        currentRunConfig:
+          title: Currentrunconfig
+          type: string
+        branches:
+          title: Branches
+          type: array
+          items:
+            $ref: '#/components/schemas/Branch'
+    PanelPower:
+      title: PanelPower
+      required:
+      - instantGridPowerW
+      - feedthroughPowerW
+      type: object
+      properties:
+        instantGridPowerW:
+          title: Instantgridpowerw
+          type: number
+        feedthroughPowerW:
+          title: Feedthroughpowerw
+          type: number
+    RelayState:
+      title: RelayState
+      enum:
+      - UNKNOWN
+      - OPEN
+      - CLOSED
+      type: string
+      description: An enumeration.
+    PanelMeter:
+      title: PanelMeter
+      required:
+      - mainMeter
+      - feedthrough
+      type: object
+      properties:
+        mainMeter:
+          $ref: '#/components/schemas/MainMeterEnergy'
+        feedthrough:
+          $ref: '#/components/schemas/FeedthroughEnergy'
+    Branch:
+      title: Branch
+      required:
+      - id
+      - relayState
+      - instantPowerW
+      - importedActiveEnergyWh
+      - exportedActiveEnergyWh
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+        relayState:
+          $ref: '#/components/schemas/RelayState'
+        instantPowerW:
+          title: Instantpowerw
+          type: number
+        importedActiveEnergyWh:
+          title: Importedactiveenergywh
+          type: number
+        exportedActiveEnergyWh:
+          title: Exportedactiveenergywh
+          type: number
+    RelayStateIn:
+      title: RelayStateIn
+      required:
+      - relayState
+      type: object
+      properties:
+        relayState:
+          $ref: '#/components/schemas/RelayState'
+    RelayStateOut:
+      title: RelayStateOut
+      required:
+      - relayState
+      type: object
+      properties:
+        relayState:
+          title: Relaystate
+          type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer

@@ -1,0 +1,228 @@
+openapi: 3.0.2
+info:
+  title: Span Auth API
+  description: Span Panel REST API
+  version: v1
+tags:
+- name: Auth
+paths:
+  /api/v1/auth/register:
+    post:
+      summary: Generate Jwt
+      operationId: generate_jwt_api_v1_auth_register_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthIn'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthOut'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - HTTPBearer: []
+      tags:
+      - Auth
+  /api/v1/auth/clients:
+    get:
+      summary: Get All Clients
+      operationId: get_all_clients_api_v1_auth_clients_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Clients'
+      security:
+      - HTTPBearer: []
+      tags:
+      - Auth
+  /api/v1/auth/clients/{name}:
+    get:
+      summary: Get Client
+      operationId: get_client_api_v1_auth_clients__name__get
+      parameters:
+      - required: true
+        schema:
+          title: Name
+          type: string
+        name: name
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - HTTPBearer: []
+      tags:
+      - Auth
+    delete:
+      summary: Delete Client
+      operationId: delete_client_api_v1_auth_clients__name__delete
+      parameters:
+      - required: true
+        schema:
+          title: Name
+          type: string
+        name: name
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - HTTPBearer: []
+      tags:
+      - Auth
+components:
+  schemas:
+    AuthIn:
+      title: AuthIn
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+        description:
+          title: Description
+          type: string
+        otp:
+          title: Otp
+          type: string
+        dashboardPassword:
+          title: Dashboardpassword
+          type: string
+    Client:
+      title: Client
+      required:
+      - allowed_endpoint_groups
+      type: object
+      properties:
+        description:
+          title: Description
+          type: string
+        issued_at:
+          title: Issued At
+          type: integer
+        allowed_endpoint_groups:
+          $ref: '#/components/schemas/AllowedEndpointGroups'
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            type: string
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    Clients:
+      title: Clients
+      required:
+      - clients
+      type: object
+      properties:
+        clients:
+          title: Clients
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Client'
+    AuthOut:
+      title: AuthOut
+      required:
+      - accessToken
+      - tokenType
+      - iatMs
+      type: object
+      properties:
+        accessToken:
+          title: Accesstoken
+          type: string
+        tokenType:
+          title: Tokentype
+          type: string
+        iatMs:
+          title: Iatms
+          type: integer
+    AllowedEndpointGroups:
+      title: AllowedEndpointGroups
+      required:
+      - delete
+      - get
+      - post
+      - push
+      type: object
+      properties:
+        delete:
+          title: Delete
+          type: array
+          items:
+            type: string
+        get:
+          title: Get
+          type: array
+          items:
+            type: string
+        post:
+          title: Post
+          type: array
+          items:
+            type: string
+        push:
+          title: Push
+          type: array
+          items:
+            type: string
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer

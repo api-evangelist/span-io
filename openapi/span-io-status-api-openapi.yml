@@ -1,0 +1,113 @@
+openapi: 3.0.2
+info:
+  title: Span Auth Status API
+  description: Span Panel REST API
+  version: v1
+tags:
+- name: Status
+paths:
+  /api/v1/status:
+    get:
+      summary: System Status
+      operationId: system_status_api_v1_status_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusOut'
+      security:
+      - HTTPBearer: []
+      tags:
+      - Status
+components:
+  schemas:
+    SystemStatus:
+      title: SystemStatus
+      required:
+      - manufacturer
+      - serial
+      - model
+      - doorState
+      - proximityProven
+      - uptime
+      type: object
+      properties:
+        manufacturer:
+          title: Manufacturer
+          type: string
+        serial:
+          title: Serial
+          type: string
+        model:
+          title: Model
+          type: string
+        doorState:
+          $ref: '#/components/schemas/DoorState'
+        proximityProven:
+          title: Proximityproven
+          type: boolean
+        uptime:
+          title: Uptime
+          type: integer
+    DoorState:
+      title: DoorState
+      enum:
+      - UNKNOWN
+      - OPEN
+      - CLOSED
+      type: string
+      description: An enumeration.
+    SoftwareStatus:
+      title: SoftwareStatus
+      required:
+      - firmwareVersion
+      - updateStatus
+      - env
+      type: object
+      properties:
+        firmwareVersion:
+          title: Firmwareversion
+          type: string
+        updateStatus:
+          title: Updatestatus
+          type: string
+        env:
+          title: Env
+          type: string
+    StatusOut:
+      title: StatusOut
+      required:
+      - software
+      - system
+      - network
+      type: object
+      properties:
+        software:
+          $ref: '#/components/schemas/SoftwareStatus'
+        system:
+          $ref: '#/components/schemas/SystemStatus'
+        network:
+          $ref: '#/components/schemas/NetworkStatus'
+    NetworkStatus:
+      title: NetworkStatus
+      required:
+      - eth0Link
+      - wlanLink
+      - wwanLink
+      type: object
+      properties:
+        eth0Link:
+          title: Eth0Link
+          type: boolean
+        wlanLink:
+          title: Wlanlink
+          type: boolean
+        wwanLink:
+          title: Wwanlink
+          type: boolean
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer

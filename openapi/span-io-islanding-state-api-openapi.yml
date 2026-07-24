@@ -1,0 +1,38 @@
+openapi: 3.0.2
+info:
+  title: Span Auth Islanding State API
+  description: Span Panel REST API
+  version: v1
+tags:
+- name: Islanding State
+paths:
+  /api/v1/islanding-state:
+    get:
+      summary: Get Islanding State
+      operationId: get_islanding_state_api_v1_islanding_state_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IslandingState'
+      security:
+      - HTTPBearer: []
+      tags:
+      - Islanding State
+components:
+  schemas:
+    IslandingState:
+      title: IslandingState
+      required:
+      - islanding_state
+      type: object
+      properties:
+        islanding_state:
+          title: Islanding State
+          type: string
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer

@@ -1,0 +1,147 @@
+openapi: 3.0.2
+info:
+  title: Span Auth Storage API
+  description: Span Panel REST API
+  version: v1
+tags:
+- name: Storage
+paths:
+  /api/v1/storage/soe:
+    get:
+      summary: Get Storage Soe
+      operationId: get_storage_soe_api_v1_storage_soe_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatteryStorage'
+      security:
+      - HTTPBearer: []
+      tags:
+      - Storage
+    post:
+      summary: Set Storage Soe
+      operationId: set_storage_soe_api_v1_storage_soe_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatteryStorage'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatteryStorage'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - HTTPBearer: []
+      tags:
+      - Storage
+  /api/v1/storage/nice-to-have-thresh:
+    get:
+      summary: Get Storage Nice To Have Threshold
+      operationId: get_storage_nice_to_have_threshold_api_v1_storage_nice_to_have_thresh_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NiceToHaveThreshold'
+      security:
+      - HTTPBearer: []
+      tags:
+      - Storage
+    post:
+      summary: Set Storage Nice To Have Threshold
+      operationId: set_storage_nice_to_have_threshold_api_v1_storage_nice_to_have_thresh_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NiceToHaveThreshold'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NiceToHaveThreshold'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - HTTPBearer: []
+      tags:
+      - Storage
+components:
+  schemas:
+    BatteryStorage:
+      title: BatteryStorage
+      required:
+      - soe
+      type: object
+      properties:
+        soe:
+          $ref: '#/components/schemas/StateOfEnergy'
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            type: string
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    StateOfEnergy:
+      title: StateOfEnergy
+      type: object
+      properties:
+        percentage:
+          title: Percentage
+          type: integer
+    NiceToHaveThreshold:
+      title: NiceToHaveThreshold
+      type: object
+      properties:
+        nice_to_have_threshold_low_soe:
+          $ref: '#/components/schemas/StateOfEnergy'
+        nice_to_have_threshold_high_soe:
+          $ref: '#/components/schemas/StateOfEnergy'
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer
