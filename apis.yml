@@ -14,9 +14,22 @@ description: >-
   per-circuit telemetry, and control of relays. SPAN API is licensed for personal, non-commercial use under MIT-0 for
   docs and example code; commercial / fleet use requires the separately licensed SPAN Fleet Manager.
 type: Provider
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Provider
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/span-io.png
 tags:
   - Energy
   - Home Energy
@@ -41,71 +54,181 @@ created: '2026-05-25'
 modified: '2026-05-25'
 specificationVersion: '0.20'
 apis:
-  - aid: span-io:span-rest-api
-    name: SPAN REST API
-    description: >-
-      Local on-premise HTTP/JSON REST API hosted directly on SPAN Panel. The API exposes authentication (registering API
-      clients and obtaining JWT access tokens), system status, Wi-Fi scan and connect, panel state, main meter, panel
-      power, islanding state, per-circuit control, panel grid relay control, emergency reconnect, and energy storage
-      state-of-energy and nice-to-have thresholds. All access is local-only on the home LAN; authentication uses HTTP
-      Bearer JWT credentials minted by the panel itself. Available initially on SPAN Panel MAIN 32 with firmware r202603
-      and later, with rollout to MAIN 16 / MLO 24 / MAIN 40 / MLO 48 planned for the second half of 2026.
-    humanURL: https://github.com/spanio/SPAN-API-Client-Docs
-    baseURL: http://span-{serial-number}.local/api/v1
-    tags:
-      - Energy
-      - Home Energy
-      - Smart Panel
-      - REST
-      - On-Premise
-      - Circuits
-      - Energy Storage
-      - Grid
-      - Islanding
-    properties:
-      - url: https://github.com/spanio/SPAN-API-Client-Docs
-        type: Documentation
-      - url: https://github.com/spanio/SPAN-API-Client-Docs/blob/main/README.md
-        type: Documentation
-      - url: openapi/span-rest-api-openapi.json
-        type: OpenAPI
-      - url: https://github.com/spanio/SPAN-API-Client-Docs/blob/main/specs/r202615/openapi.json
-        type: OpenAPI
-      - url: json-schema/span-mdns-services-schema.json
-        type: JSONSchema
-      - url: json-ld/span-context.jsonld
-        type: JSONLD
-  - aid: span-io:span-ebus-mqtt-api
-    name: SPAN eBus MQTT API
-    description: >-
-      Publish/subscribe streaming API hosted on SPAN Panel using the Electrification Bus (eBus) integration framework
-      and the Homie Convention. SPAN Panel hosts an MQTT broker accessible over MQTTS (8883), WS, and WSS. Clients
-      subscribe to `ebus/5/<serial>/...` topics to receive real-time panel state, per-circuit telemetry, energy storage
-      state, and SPAN Drive integration data, and publish to `/set` topics to operate relays and control panel state.
-      The broker enforces topic-level ACLs — full read access on `ebus/#`, write access limited to Homie `/set` control
-      topics and to non-panel device subtrees under `ebus/5/`. Credentials are obtained via the REST authentication
-      endpoint.
-    humanURL: https://github.com/spanio/SPAN-API-Client-Docs#span-api-interaction-models
-    tags:
-      - MQTT
-      - Homie
-      - Electrification Bus
-      - eBus
-      - Pub/Sub
-      - Streaming
-      - On-Premise
-      - Energy
-    properties:
-      - url: https://github.com/spanio/SPAN-API-Client-Docs#publishsubscribe
-        type: Documentation
-      - url: https://homieiot.github.io/specification/
-        type: Documentation
-      - url: https://ebus.energy/
-        type: Documentation
-      - url: asyncapi/span-ebus-asyncapi.yml
-        type: AsyncAPI
-      - url: json-schema/span-homie-schema.json
-        type: JSONSchema
+- aid: span-io:span-ebus-mqtt-api
+  name: SPAN eBus MQTT API
+  description: >-
+    Publish/subscribe streaming API hosted on SPAN Panel using the Electrification Bus (eBus) integration
+    framework and the Homie Convention. SPAN Panel hosts an MQTT broker accessible over MQTTS (8883),
+    WS, and WSS. Clients subscribe to `ebus/5/<serial>/...` topics to receive real-time panel state, per-circuit
+    telemetry, energy storage state, and SPAN Drive integration data, and publish to `/set` topics to
+    operate relays and control panel state. The broker enforces topic-level ACLs — full read access on
+    `ebus/#`, write access limited to Homie `/set` control topics and to non-panel device subtrees under
+    `ebus/5/`. Credentials are obtained via the REST authentication endpoint.
+  humanURL: https://github.com/spanio/SPAN-API-Client-Docs#span-api-interaction-models
+  tags:
+  - MQTT
+  - Homie
+  - Electrification Bus
+  - eBus
+  - Pub/Sub
+  - Streaming
+  - On-Premise
+  - Energy
+  properties:
+  - url: https://github.com/spanio/SPAN-API-Client-Docs#publishsubscribe
+    type: Documentation
+  - url: https://homieiot.github.io/specification/
+    type: Documentation
+  - url: https://ebus.energy/
+    type: Documentation
+  - url: asyncapi/span-ebus-asyncapi.yml
+    type: AsyncAPI
+  - url: json-schema/span-homie-schema.json
+    type: JSONSchema
+- aid: span-io:span-io-auth-api
+  name: SPAN Auth API
+  description: The Auth API from SPAN — 3 operation(s) for auth.
+  humanURL: https://github.com/spanio/SPAN-API-Client-Docs
+  baseURL: http://span-{serial-number}.local/api/v1
+  tags:
+  - Auth
+  properties:
+  - type: OpenAPI
+    url: openapi/span-io-auth-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/spanio/SPAN-API-Client-Docs
+  - type: Documentation
+    url: https://github.com/spanio/SPAN-API-Client-Docs/blob/main/README.md
+  - type: JSONSchema
+    url: json-schema/span-mdns-services-schema.json
+  - type: JSONLD
+    url: json-ld/span-context.jsonld
+- aid: span-io:span-io-circuits-api
+  name: SPAN Circuits API
+  description: The Circuits API from SPAN — 2 operation(s) for circuits.
+  humanURL: https://github.com/spanio/SPAN-API-Client-Docs
+  baseURL: http://span-{serial-number}.local/api/v1
+  tags:
+  - Circuits
+  properties:
+  - type: OpenAPI
+    url: openapi/span-io-circuits-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/spanio/SPAN-API-Client-Docs
+  - type: Documentation
+    url: https://github.com/spanio/SPAN-API-Client-Docs/blob/main/README.md
+  - type: JSONSchema
+    url: json-schema/span-mdns-services-schema.json
+  - type: JSONLD
+    url: json-ld/span-context.jsonld
+- aid: span-io:span-io-islanding-state-api
+  name: SPAN Islanding State API
+  description: The Islanding State API from SPAN — 1 operation(s) for islanding state.
+  humanURL: https://github.com/spanio/SPAN-API-Client-Docs
+  baseURL: http://span-{serial-number}.local/api/v1
+  tags:
+  - Islanding State
+  properties:
+  - type: OpenAPI
+    url: openapi/span-io-islanding-state-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/spanio/SPAN-API-Client-Docs
+  - type: Documentation
+    url: https://github.com/spanio/SPAN-API-Client-Docs/blob/main/README.md
+  - type: JSONSchema
+    url: json-schema/span-mdns-services-schema.json
+  - type: JSONLD
+    url: json-ld/span-context.jsonld
+- aid: span-io:span-io-panel-api
+  name: SPAN Panel API
+  description: The Panel API from SPAN — 5 operation(s) for panel.
+  humanURL: https://github.com/spanio/SPAN-API-Client-Docs
+  baseURL: http://span-{serial-number}.local/api/v1
+  tags:
+  - Panel
+  properties:
+  - type: OpenAPI
+    url: openapi/span-io-panel-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/spanio/SPAN-API-Client-Docs
+  - type: Documentation
+    url: https://github.com/spanio/SPAN-API-Client-Docs/blob/main/README.md
+  - type: JSONSchema
+    url: json-schema/span-mdns-services-schema.json
+  - type: JSONLD
+    url: json-ld/span-context.jsonld
+- aid: span-io:span-io-spaces-api
+  name: SPAN Spaces API
+  description: The Spaces API from SPAN — 2 operation(s) for spaces.
+  humanURL: https://github.com/spanio/SPAN-API-Client-Docs
+  baseURL: http://span-{serial-number}.local/api/v1
+  tags:
+  - Spaces
+  properties:
+  - type: OpenAPI
+    url: openapi/span-io-spaces-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/spanio/SPAN-API-Client-Docs
+  - type: Documentation
+    url: https://github.com/spanio/SPAN-API-Client-Docs/blob/main/README.md
+  - type: JSONSchema
+    url: json-schema/span-mdns-services-schema.json
+  - type: JSONLD
+    url: json-ld/span-context.jsonld
+- aid: span-io:span-io-status-api
+  name: SPAN Status API
+  description: The Status API from SPAN — 1 operation(s) for status.
+  humanURL: https://github.com/spanio/SPAN-API-Client-Docs
+  baseURL: http://span-{serial-number}.local/api/v1
+  tags:
+  - Status
+  properties:
+  - type: OpenAPI
+    url: openapi/span-io-status-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/spanio/SPAN-API-Client-Docs
+  - type: Documentation
+    url: https://github.com/spanio/SPAN-API-Client-Docs/blob/main/README.md
+  - type: JSONSchema
+    url: json-schema/span-mdns-services-schema.json
+  - type: JSONLD
+    url: json-ld/span-context.jsonld
+- aid: span-io:span-io-storage-api
+  name: SPAN Storage API
+  description: The Storage API from SPAN — 2 operation(s) for storage.
+  humanURL: https://github.com/spanio/SPAN-API-Client-Docs
+  baseURL: http://span-{serial-number}.local/api/v1
+  tags:
+  - Storage
+  properties:
+  - type: OpenAPI
+    url: openapi/span-io-storage-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/spanio/SPAN-API-Client-Docs
+  - type: Documentation
+    url: https://github.com/spanio/SPAN-API-Client-Docs/blob/main/README.md
+  - type: JSONSchema
+    url: json-schema/span-mdns-services-schema.json
+  - type: JSONLD
+    url: json-ld/span-context.jsonld
+- aid: span-io:span-io-wifi-api
+  name: SPAN Wifi API
+  description: The Wifi API from SPAN — 2 operation(s) for wifi.
+  humanURL: https://github.com/spanio/SPAN-API-Client-Docs
+  baseURL: http://span-{serial-number}.local/api/v1
+  tags:
+  - Wifi
+  properties:
+  - type: OpenAPI
+    url: openapi/span-io-wifi-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/spanio/SPAN-API-Client-Docs
+  - type: Documentation
+    url: https://github.com/spanio/SPAN-API-Client-Docs/blob/main/README.md
+  - type: JSONSchema
+    url: json-schema/span-mdns-services-schema.json
+  - type: JSONLD
+    url: json-ld/span-context.jsonld
 common:
   - type: AgenticAccess
     url: agentic-access/span-io-agentic-access.yml
