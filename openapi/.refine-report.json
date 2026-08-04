@@ -1,0 +1,28 @@
+{
+  "provider": "span-io",
+  "sources": [
+    "span-io-auth-api-openapi.yml",
+    "span-io-circuits-api-openapi.yml",
+    "span-io-islanding-state-api-openapi.yml",
+    "span-io-panel-api-openapi.yml",
+    "span-io-spaces-api-openapi.yml",
+    "span-io-status-api-openapi.yml",
+    "span-io-storage-api-openapi.yml",
+    "span-io-wifi-api-openapi.yml"
+  ],
+  "outputs": [
+    "span-io-auth-api-openapi.yml",
+    "span-io-circuits-api-openapi.yml",
+    "span-io-islanding-state-api-openapi.yml",
+    "span-io-panel-api-openapi.yml",
+    "span-io-spaces-api-openapi.yml",
+    "span-io-status-api-openapi.yml",
+    "span-io-storage-api-openapi.yml",
+    "span-io-wifi-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
