@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Span Auth Islanding State API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Islanding State",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Islanding State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/islanding-state",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Islanding State"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

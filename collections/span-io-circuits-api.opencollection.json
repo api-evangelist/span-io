@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Span Auth Circuits API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Circuits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Circuits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/circuits",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Circuits"
+        },
+        {
+          "info": {
+            "name": "Get Circuit State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/circuits/:circuitId",
+            "params": [
+              {
+                "name": "circuitId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Circuit State"
+        },
+        {
+          "info": {
+            "name": "Set Circuit State",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/circuits/:circuitId",
+            "params": [
+              {
+                "name": "circuitId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Set Circuit State"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

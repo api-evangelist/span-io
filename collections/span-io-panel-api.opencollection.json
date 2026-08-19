@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Span Auth Panel API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Panel",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Panel State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/panel",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Panel State"
+        },
+        {
+          "info": {
+            "name": "Get Main Relay State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/panel/grid",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Main Relay State"
+        },
+        {
+          "info": {
+            "name": "Set Main Relay State",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/panel/grid",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Set Main Relay State"
+        },
+        {
+          "info": {
+            "name": "Get Panel Power",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/panel/power",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Panel Power"
+        },
+        {
+          "info": {
+            "name": "Get Panel Meter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/panel/meter",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Panel Meter"
+        },
+        {
+          "info": {
+            "name": "Run Panel Emergency Reconnect",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/panel/emergency-reconnect",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Run Panel Emergency Reconnect"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

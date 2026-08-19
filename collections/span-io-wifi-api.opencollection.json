@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Span Auth Wifi API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Wifi",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Wifi Scan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/wifi/scan",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Wifi Scan"
+        },
+        {
+          "info": {
+            "name": "Run Wifi Connect",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/wifi/connect",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Run Wifi Connect"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
