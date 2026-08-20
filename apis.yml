@@ -70,6 +70,15 @@ apis:
   - Homie
   - Electrification Bus
   - eBus
+  - Pub-Sub
+  - Streaming
+  - On-Premise
+  - Energy
+  tags_raw:
+  - MQTT
+  - Homie
+  - Electrification Bus
+  - eBus
   - Pub/Sub
   - Streaming
   - On-Premise
@@ -91,6 +100,8 @@ apis:
   humanURL: https://github.com/spanio/SPAN-API-Client-Docs
   baseURL: http://span-{serial-number}.local/api/v1
   tags:
+  - Authentication
+  tags_raw:
   - Auth
   properties:
   - type: OpenAPI
@@ -217,6 +228,8 @@ apis:
   humanURL: https://github.com/spanio/SPAN-API-Client-Docs
   baseURL: http://span-{serial-number}.local/api/v1
   tags:
+  - Wi-Fi
+  tags_raw:
   - Wifi
   properties:
   - type: OpenAPI
