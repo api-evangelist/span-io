@@ -14,6 +14,20 @@ description: >-
   per-circuit telemetry, and control of relays. SPAN API is licensed for personal, non-commercial use under MIT-0 for
   docs and example code; commercial / fleet use requires the separately licensed SPAN Fleet Manager.
 type: Provider
+deliveryModel:
+  model: saas
+  license: MIT-0 (Docs and example code)
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - license
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
@@ -243,6 +257,8 @@ apis:
   - type: JSONLD
     url: json-ld/span-context.jsonld
 common:
+  - type: ContributionGuide
+    url: https://github.com/spanio/SPAN-API-Client-Docs/blob/main/CONTRIBUTING.md
   - type: AgenticAccess
     url: agentic-access/span-io-agentic-access.yml
   - type: VulnerabilityDisclosure
