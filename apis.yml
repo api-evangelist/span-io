@@ -84,7 +84,7 @@ apis:
   - Homie
   - Electrification Bus
   - eBus
-  - Pub/Sub
+  - Pub-Sub
   - Streaming
   - On-Premise
   - Energy
@@ -242,7 +242,7 @@ apis:
   humanURL: https://github.com/spanio/SPAN-API-Client-Docs
   baseURL: http://span-{serial-number}.local/api/v1
   tags:
-  - Wifi
+  - Wi-Fi
   tags_raw:
   - Wifi
   properties:
