@@ -63,6 +63,25 @@ tags:
   - MQTT
   - Homie
   - Electrification Bus
+  - On-Premises
+tags_raw:
+  - Energy
+  - Home Energy
+  - Electrification
+  - Smart Panel
+  - Electrical Panel
+  - Home Automation
+  - Solar
+  - Energy Storage
+  - EV Charging
+  - Grid
+  - Islanding
+  - Backup Power
+  - Demand Response
+  - IoT
+  - MQTT
+  - Homie
+  - Electrification Bus
   - On-Premise
 url: https://raw.githubusercontent.com/api-evangelist/span-io/refs/heads/main/apis.yml
 created: '2026-05-25'
@@ -87,7 +106,7 @@ apis:
   - eBus
   - Pub-Sub
   - Streaming
-  - On-Premise
+  - On-Premises
   - Energy
   tags_raw:
   - MQTT
@@ -189,6 +208,8 @@ apis:
   humanURL: https://github.com/spanio/SPAN-API-Client-Docs
   baseURL: http://span-{serial-number}.local/api/v1
   tags:
+  - Space
+  tags_raw:
   - Spaces
   properties:
   - type: OpenAPI
