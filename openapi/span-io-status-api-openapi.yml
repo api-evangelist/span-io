@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Span Auth Status API
+  title: Span Status API
   description: Span Panel REST API
   version: v1
 tags:
@@ -51,31 +51,6 @@ components:
         uptime:
           title: Uptime
           type: integer
-    DoorState:
-      title: DoorState
-      enum:
-      - UNKNOWN
-      - OPEN
-      - CLOSED
-      type: string
-      description: An enumeration.
-    SoftwareStatus:
-      title: SoftwareStatus
-      required:
-      - firmwareVersion
-      - updateStatus
-      - env
-      type: object
-      properties:
-        firmwareVersion:
-          title: Firmwareversion
-          type: string
-        updateStatus:
-          title: Updatestatus
-          type: string
-        env:
-          title: Env
-          type: string
     StatusOut:
       title: StatusOut
       required:
@@ -90,6 +65,14 @@ components:
           $ref: '#/components/schemas/SystemStatus'
         network:
           $ref: '#/components/schemas/NetworkStatus'
+    DoorState:
+      title: DoorState
+      enum:
+      - UNKNOWN
+      - OPEN
+      - CLOSED
+      type: string
+      description: An enumeration.
     NetworkStatus:
       title: NetworkStatus
       required:
@@ -107,6 +90,23 @@ components:
         wwanLink:
           title: Wwanlink
           type: boolean
+    SoftwareStatus:
+      title: SoftwareStatus
+      required:
+      - firmwareVersion
+      - updateStatus
+      - env
+      type: object
+      properties:
+        firmwareVersion:
+          title: Firmwareversion
+          type: string
+        updateStatus:
+          title: Updatestatus
+          type: string
+        env:
+          title: Env
+          type: string
   securitySchemes:
     HTTPBearer:
       type: http

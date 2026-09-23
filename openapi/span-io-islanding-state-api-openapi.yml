@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Span Auth Islanding State API
+  title: Span Islanding State API
   description: Span Panel REST API
   version: v1
 tags:

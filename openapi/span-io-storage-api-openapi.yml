@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Span Auth Storage API
+  title: Span Storage API
   description: Span Panel REST API
   version: v1
 tags:
@@ -90,23 +90,6 @@ paths:
       - Storage
 components:
   schemas:
-    BatteryStorage:
-      title: BatteryStorage
-      required:
-      - soe
-      type: object
-      properties:
-        soe:
-          $ref: '#/components/schemas/StateOfEnergy'
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
     ValidationError:
       title: ValidationError
       required:
@@ -133,6 +116,15 @@ components:
         percentage:
           title: Percentage
           type: integer
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
     NiceToHaveThreshold:
       title: NiceToHaveThreshold
       type: object
@@ -140,6 +132,14 @@ components:
         nice_to_have_threshold_low_soe:
           $ref: '#/components/schemas/StateOfEnergy'
         nice_to_have_threshold_high_soe:
+          $ref: '#/components/schemas/StateOfEnergy'
+    BatteryStorage:
+      title: BatteryStorage
+      required:
+      - soe
+      type: object
+      properties:
+        soe:
           $ref: '#/components/schemas/StateOfEnergy'
   securitySchemes:
     HTTPBearer:
