@@ -105,25 +105,20 @@ paths:
       - Auth
 components:
   schemas:
-    ValidationError:
-      title: ValidationError
+    Client:
+      title: Client
       required:
-      - loc
-      - msg
-      - type
+      - allowed_endpoint_groups
       type: object
       properties:
-        loc:
-          title: Location
-          type: array
-          items:
-            type: string
-        msg:
-          title: Message
+        description:
+          title: Description
           type: string
-        type:
-          title: Error Type
-          type: string
+        issued_at:
+          title: Issued At
+          type: integer
+        allowed_endpoint_groups:
+          $ref: '#/components/schemas/AllowedEndpointGroups'
     AuthIn:
       title: AuthIn
       required:
@@ -142,46 +137,6 @@ components:
         dashboardPassword:
           title: Dashboardpassword
           type: string
-    Client:
-      title: Client
-      required:
-      - allowed_endpoint_groups
-      type: object
-      properties:
-        description:
-          title: Description
-          type: string
-        issued_at:
-          title: Issued At
-          type: integer
-        allowed_endpoint_groups:
-          $ref: '#/components/schemas/AllowedEndpointGroups'
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    AuthOut:
-      title: AuthOut
-      required:
-      - accessToken
-      - tokenType
-      - iatMs
-      type: object
-      properties:
-        accessToken:
-          title: Accesstoken
-          type: string
-        tokenType:
-          title: Tokentype
-          type: string
-        iatMs:
-          title: Iatms
-          type: integer
     Clients:
       title: Clients
       required:
@@ -222,6 +177,51 @@ components:
           type: array
           items:
             type: string
+    AuthOut:
+      title: AuthOut
+      required:
+      - accessToken
+      - tokenType
+      - iatMs
+      type: object
+      properties:
+        accessToken:
+          title: Accesstoken
+          type: string
+        tokenType:
+          title: Tokentype
+          type: string
+        iatMs:
+          title: Iatms
+          type: integer
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            type: string
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
   securitySchemes:
     HTTPBearer:
       type: http

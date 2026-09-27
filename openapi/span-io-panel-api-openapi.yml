@@ -107,57 +107,6 @@ paths:
       - Panel
 components:
   schemas:
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      properties:
-        loc:
-          title: Location
-          type: array
-          items:
-            type: string
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
-    MainMeterEnergy:
-      title: MainMeterEnergy
-      required:
-      - producedEnergyWh
-      - consumedEnergyWh
-      type: object
-      properties:
-        producedEnergyWh:
-          title: Producedenergywh
-          type: number
-        consumedEnergyWh:
-          title: Consumedenergywh
-          type: number
-    PanelMeter:
-      title: PanelMeter
-      required:
-      - mainMeter
-      - feedthrough
-      type: object
-      properties:
-        mainMeter:
-          $ref: '#/components/schemas/MainMeterEnergy'
-        feedthrough:
-          $ref: '#/components/schemas/FeedthroughEnergy'
-    RelayStateIn:
-      title: RelayStateIn
-      required:
-      - relayState
-      type: object
-      properties:
-        relayState:
-          $ref: '#/components/schemas/RelayState'
     PanelState:
       title: PanelState
       required:
@@ -206,45 +155,19 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Branch'
-    PanelPower:
-      title: PanelPower
+    MainMeterEnergy:
+      title: MainMeterEnergy
       required:
-      - instantGridPowerW
-      - feedthroughPowerW
+      - producedEnergyWh
+      - consumedEnergyWh
       type: object
       properties:
-        instantGridPowerW:
-          title: Instantgridpowerw
+        producedEnergyWh:
+          title: Producedenergywh
           type: number
-        feedthroughPowerW:
-          title: Feedthroughpowerw
+        consumedEnergyWh:
+          title: Consumedenergywh
           type: number
-    RelayStateOut:
-      title: RelayStateOut
-      required:
-      - relayState
-      type: object
-      properties:
-        relayState:
-          title: Relaystate
-          type: string
-    RelayState:
-      title: RelayState
-      enum:
-      - UNKNOWN
-      - OPEN
-      - CLOSED
-      type: string
-      description: An enumeration.
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
     FeedthroughEnergy:
       title: FeedthroughEnergy
       required:
@@ -258,6 +181,35 @@ components:
         consumedEnergyWh:
           title: Consumedenergywh
           type: number
+    PanelPower:
+      title: PanelPower
+      required:
+      - instantGridPowerW
+      - feedthroughPowerW
+      type: object
+      properties:
+        instantGridPowerW:
+          title: Instantgridpowerw
+          type: number
+        feedthroughPowerW:
+          title: Feedthroughpowerw
+          type: number
+    RelayStateIn:
+      title: RelayStateIn
+      required:
+      - relayState
+      type: object
+      properties:
+        relayState:
+          $ref: '#/components/schemas/RelayState'
+    RelayState:
+      title: RelayState
+      enum:
+      - UNKNOWN
+      - OPEN
+      - CLOSED
+      type: string
+      description: An enumeration.
     Branch:
       title: Branch
       required:
@@ -282,6 +234,54 @@ components:
         exportedActiveEnergyWh:
           title: Exportedactiveenergywh
           type: number
+    PanelMeter:
+      title: PanelMeter
+      required:
+      - mainMeter
+      - feedthrough
+      type: object
+      properties:
+        mainMeter:
+          $ref: '#/components/schemas/MainMeterEnergy'
+        feedthrough:
+          $ref: '#/components/schemas/FeedthroughEnergy'
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    RelayStateOut:
+      title: RelayStateOut
+      required:
+      - relayState
+      type: object
+      properties:
+        relayState:
+          title: Relaystate
+          type: string
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            type: string
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
   securitySchemes:
     HTTPBearer:
       type: http

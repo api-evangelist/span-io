@@ -64,6 +64,7 @@ tags:
   - Homie
   - Electrification Bus
   - On-Premises
+  - Real-Time
 tags_raw:
   - Energy
   - Home Energy
@@ -83,6 +84,7 @@ tags_raw:
   - Homie
   - Electrification Bus
   - On-Premise
+  - Real-Time
 url: https://raw.githubusercontent.com/api-evangelist/span-io/refs/heads/main/apis.yml
 created: '2026-05-25'
 modified: '2026-05-25'
@@ -208,9 +210,11 @@ apis:
   humanURL: https://github.com/spanio/SPAN-API-Client-Docs
   baseURL: http://span-{serial-number}.local/api/v1
   tags:
+  - Spaces
   - Space
   tags_raw:
   - Spaces
+  - Space
   properties:
   - type: OpenAPI
     url: openapi/span-io-spaces-api-openapi.yml

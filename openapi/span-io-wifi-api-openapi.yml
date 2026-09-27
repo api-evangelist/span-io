@@ -50,57 +50,34 @@ paths:
       - Wifi
 components:
   schemas:
-    ValidationError:
-      title: ValidationError
+    WifiConnectOut:
+      title: WifiConnectOut
       required:
-      - loc
-      - msg
-      - type
-      type: object
-      properties:
-        loc:
-          title: Location
-          type: array
-          items:
-            type: string
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
-    WifiScanOut:
-      title: WifiScanOut
-      required:
-      - accessPoints
-      type: object
-      properties:
-        accessPoints:
-          title: Accesspoints
-          type: array
-          items:
-            $ref: '#/components/schemas/WifiAccessPoint'
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    WifiConnectIn:
-      title: WifiConnectIn
-      required:
+      - bssid
       - ssid
-      - psk
+      - signal
+      - encrypted
+      - connected
+      - error
       type: object
       properties:
+        bssid:
+          title: Bssid
+          type: string
         ssid:
           title: Ssid
           type: string
-        psk:
-          title: Psk
+        signal:
+          title: Signal
+          type: integer
+        encrypted:
+          title: Encrypted
+          type: boolean
+        connected:
+          title: Connected
+          type: boolean
+        error:
+          title: Error
           type: string
     WifiAccessPoint:
       title: WifiAccessPoint
@@ -135,34 +112,57 @@ components:
           title: Error
           type: string
           default: ''
-    WifiConnectOut:
-      title: WifiConnectOut
+    WifiScanOut:
+      title: WifiScanOut
       required:
-      - bssid
-      - ssid
-      - signal
-      - encrypted
-      - connected
-      - error
+      - accessPoints
       type: object
       properties:
-        bssid:
-          title: Bssid
-          type: string
+        accessPoints:
+          title: Accesspoints
+          type: array
+          items:
+            $ref: '#/components/schemas/WifiAccessPoint'
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    WifiConnectIn:
+      title: WifiConnectIn
+      required:
+      - ssid
+      - psk
+      type: object
+      properties:
         ssid:
           title: Ssid
           type: string
-        signal:
-          title: Signal
-          type: integer
-        encrypted:
-          title: Encrypted
-          type: boolean
-        connected:
-          title: Connected
-          type: boolean
-        error:
-          title: Error
+        psk:
+          title: Psk
+          type: string
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            type: string
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
           type: string
   securitySchemes:
     HTTPBearer:
