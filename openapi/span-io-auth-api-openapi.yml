@@ -105,49 +105,15 @@ paths:
       - Auth
 components:
   schemas:
-    Client:
-      title: Client
-      required:
-      - allowed_endpoint_groups
+    HTTPValidationError:
+      title: HTTPValidationError
       type: object
       properties:
-        description:
-          title: Description
-          type: string
-        issued_at:
-          title: Issued At
-          type: integer
-        allowed_endpoint_groups:
-          $ref: '#/components/schemas/AllowedEndpointGroups'
-    AuthIn:
-      title: AuthIn
-      required:
-      - name
-      type: object
-      properties:
-        name:
-          title: Name
-          type: string
-        description:
-          title: Description
-          type: string
-        otp:
-          title: Otp
-          type: string
-        dashboardPassword:
-          title: Dashboardpassword
-          type: string
-    Clients:
-      title: Clients
-      required:
-      - clients
-      type: object
-      properties:
-        clients:
-          title: Clients
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/Client'
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
     AllowedEndpointGroups:
       title: AllowedEndpointGroups
       required:
@@ -177,32 +143,20 @@ components:
           type: array
           items:
             type: string
-    AuthOut:
-      title: AuthOut
+    Client:
+      title: Client
       required:
-      - accessToken
-      - tokenType
-      - iatMs
+      - allowed_endpoint_groups
       type: object
       properties:
-        accessToken:
-          title: Accesstoken
+        description:
+          title: Description
           type: string
-        tokenType:
-          title: Tokentype
-          type: string
-        iatMs:
-          title: Iatms
+        issued_at:
+          title: Issued At
           type: integer
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
+        allowed_endpoint_groups:
+          $ref: '#/components/schemas/AllowedEndpointGroups'
     ValidationError:
       title: ValidationError
       required:
@@ -222,6 +176,52 @@ components:
         type:
           title: Error Type
           type: string
+    AuthIn:
+      title: AuthIn
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+        description:
+          title: Description
+          type: string
+        otp:
+          title: Otp
+          type: string
+        dashboardPassword:
+          title: Dashboardpassword
+          type: string
+    Clients:
+      title: Clients
+      required:
+      - clients
+      type: object
+      properties:
+        clients:
+          title: Clients
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Client'
+    AuthOut:
+      title: AuthOut
+      required:
+      - accessToken
+      - tokenType
+      - iatMs
+      type: object
+      properties:
+        accessToken:
+          title: Accesstoken
+          type: string
+        tokenType:
+          title: Tokentype
+          type: string
+        iatMs:
+          title: Iatms
+          type: integer
   securitySchemes:
     HTTPBearer:
       type: http

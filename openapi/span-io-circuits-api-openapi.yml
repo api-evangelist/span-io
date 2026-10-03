@@ -83,64 +83,6 @@ paths:
       - Circuits
 components:
   schemas:
-    Priority:
-      title: Priority
-      enum:
-      - UNKNOWN
-      - NON_ESSENTIAL
-      - NICE_TO_HAVE
-      - MUST_HAVE
-      type: string
-      description: An enumeration.
-    BooleanIn:
-      title: BooleanIn
-      required:
-      - value
-      type: object
-      properties:
-        value:
-          title: Value
-          type: boolean
-    PriorityIn:
-      title: PriorityIn
-      required:
-      - priority
-      type: object
-      properties:
-        priority:
-          $ref: '#/components/schemas/Priority'
-    Body_set_circuit_state_api_v1_circuits__circuitId__post:
-      title: Body_set_circuit_state_api_v1_circuits__circuitId__post
-      type: object
-      properties:
-        relayStateIn:
-          $ref: '#/components/schemas/RelayStateIn'
-        priorityIn:
-          $ref: '#/components/schemas/PriorityIn'
-        circuitNameIn:
-          $ref: '#/components/schemas/CircuitNameIn'
-        userControllableIn:
-          $ref: '#/components/schemas/BooleanIn'
-        sheddableIn:
-          $ref: '#/components/schemas/BooleanIn'
-        neverBackupIn:
-          $ref: '#/components/schemas/BooleanIn'
-    RelayStateIn:
-      title: RelayStateIn
-      required:
-      - relayState
-      type: object
-      properties:
-        relayState:
-          $ref: '#/components/schemas/RelayState'
-    RelayState:
-      title: RelayState
-      enum:
-      - UNKNOWN
-      - OPEN
-      - CLOSED
-      type: string
-      description: An enumeration.
     Circuit:
       title: Circuit
       required:
@@ -196,15 +138,6 @@ components:
         isNeverBackup:
           title: Isneverbackup
           type: boolean
-    CircuitNameIn:
-      title: CircuitNameIn
-      required:
-      - name
-      type: object
-      properties:
-        name:
-          title: Name
-          type: string
     HTTPValidationError:
       title: HTTPValidationError
       type: object
@@ -214,17 +147,32 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ValidationError'
-    CircuitsOut:
-      title: CircuitsOut
+    RelayState:
+      title: RelayState
+      enum:
+      - UNKNOWN
+      - OPEN
+      - CLOSED
+      type: string
+      description: An enumeration.
+    BooleanIn:
+      title: BooleanIn
       required:
-      - circuits
+      - value
       type: object
       properties:
-        circuits:
-          title: Circuits
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/Circuit'
+        value:
+          title: Value
+          type: boolean
+    Priority:
+      title: Priority
+      enum:
+      - UNKNOWN
+      - NON_ESSENTIAL
+      - NICE_TO_HAVE
+      - MUST_HAVE
+      type: string
+      description: An enumeration.
     ValidationError:
       title: ValidationError
       required:
@@ -243,6 +191,58 @@ components:
           type: string
         type:
           title: Error Type
+          type: string
+    RelayStateIn:
+      title: RelayStateIn
+      required:
+      - relayState
+      type: object
+      properties:
+        relayState:
+          $ref: '#/components/schemas/RelayState'
+    PriorityIn:
+      title: PriorityIn
+      required:
+      - priority
+      type: object
+      properties:
+        priority:
+          $ref: '#/components/schemas/Priority'
+    Body_set_circuit_state_api_v1_circuits__circuitId__post:
+      title: Body_set_circuit_state_api_v1_circuits__circuitId__post
+      type: object
+      properties:
+        relayStateIn:
+          $ref: '#/components/schemas/RelayStateIn'
+        priorityIn:
+          $ref: '#/components/schemas/PriorityIn'
+        circuitNameIn:
+          $ref: '#/components/schemas/CircuitNameIn'
+        userControllableIn:
+          $ref: '#/components/schemas/BooleanIn'
+        sheddableIn:
+          $ref: '#/components/schemas/BooleanIn'
+        neverBackupIn:
+          $ref: '#/components/schemas/BooleanIn'
+    CircuitsOut:
+      title: CircuitsOut
+      required:
+      - circuits
+      type: object
+      properties:
+        circuits:
+          title: Circuits
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Circuit'
+    CircuitNameIn:
+      title: CircuitNameIn
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          title: Name
           type: string
   securitySchemes:
     HTTPBearer:

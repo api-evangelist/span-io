@@ -23,6 +23,62 @@ paths:
       - Status
 components:
   schemas:
+    StatusOut:
+      title: StatusOut
+      required:
+      - software
+      - system
+      - network
+      type: object
+      properties:
+        software:
+          $ref: '#/components/schemas/SoftwareStatus'
+        system:
+          $ref: '#/components/schemas/SystemStatus'
+        network:
+          $ref: '#/components/schemas/NetworkStatus'
+    DoorState:
+      title: DoorState
+      enum:
+      - UNKNOWN
+      - OPEN
+      - CLOSED
+      type: string
+      description: An enumeration.
+    NetworkStatus:
+      title: NetworkStatus
+      required:
+      - eth0Link
+      - wlanLink
+      - wwanLink
+      type: object
+      properties:
+        eth0Link:
+          title: Eth0Link
+          type: boolean
+        wlanLink:
+          title: Wlanlink
+          type: boolean
+        wwanLink:
+          title: Wwanlink
+          type: boolean
+    SoftwareStatus:
+      title: SoftwareStatus
+      required:
+      - firmwareVersion
+      - updateStatus
+      - env
+      type: object
+      properties:
+        firmwareVersion:
+          title: Firmwareversion
+          type: string
+        updateStatus:
+          title: Updatestatus
+          type: string
+        env:
+          title: Env
+          type: string
     SystemStatus:
       title: SystemStatus
       required:
@@ -51,62 +107,6 @@ components:
         uptime:
           title: Uptime
           type: integer
-    SoftwareStatus:
-      title: SoftwareStatus
-      required:
-      - firmwareVersion
-      - updateStatus
-      - env
-      type: object
-      properties:
-        firmwareVersion:
-          title: Firmwareversion
-          type: string
-        updateStatus:
-          title: Updatestatus
-          type: string
-        env:
-          title: Env
-          type: string
-    StatusOut:
-      title: StatusOut
-      required:
-      - software
-      - system
-      - network
-      type: object
-      properties:
-        software:
-          $ref: '#/components/schemas/SoftwareStatus'
-        system:
-          $ref: '#/components/schemas/SystemStatus'
-        network:
-          $ref: '#/components/schemas/NetworkStatus'
-    NetworkStatus:
-      title: NetworkStatus
-      required:
-      - eth0Link
-      - wlanLink
-      - wwanLink
-      type: object
-      properties:
-        eth0Link:
-          title: Eth0Link
-          type: boolean
-        wlanLink:
-          title: Wlanlink
-          type: boolean
-        wwanLink:
-          title: Wwanlink
-          type: boolean
-    DoorState:
-      title: DoorState
-      enum:
-      - UNKNOWN
-      - OPEN
-      - CLOSED
-      type: string
-      description: An enumeration.
   securitySchemes:
     HTTPBearer:
       type: http

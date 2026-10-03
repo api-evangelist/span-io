@@ -107,6 +107,60 @@ paths:
       - Panel
 components:
   schemas:
+    PanelMeter:
+      title: PanelMeter
+      required:
+      - mainMeter
+      - feedthrough
+      type: object
+      properties:
+        mainMeter:
+          $ref: '#/components/schemas/MainMeterEnergy'
+        feedthrough:
+          $ref: '#/components/schemas/FeedthroughEnergy'
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    RelayState:
+      title: RelayState
+      enum:
+      - UNKNOWN
+      - OPEN
+      - CLOSED
+      type: string
+      description: An enumeration.
+    FeedthroughEnergy:
+      title: FeedthroughEnergy
+      required:
+      - producedEnergyWh
+      - consumedEnergyWh
+      type: object
+      properties:
+        producedEnergyWh:
+          title: Producedenergywh
+          type: number
+        consumedEnergyWh:
+          title: Consumedenergywh
+          type: number
+    MainMeterEnergy:
+      title: MainMeterEnergy
+      required:
+      - producedEnergyWh
+      - consumedEnergyWh
+      type: object
+      properties:
+        producedEnergyWh:
+          title: Producedenergywh
+          type: number
+        consumedEnergyWh:
+          title: Consumedenergywh
+          type: number
     PanelState:
       title: PanelState
       required:
@@ -155,105 +209,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Branch'
-    MainMeterEnergy:
-      title: MainMeterEnergy
-      required:
-      - producedEnergyWh
-      - consumedEnergyWh
-      type: object
-      properties:
-        producedEnergyWh:
-          title: Producedenergywh
-          type: number
-        consumedEnergyWh:
-          title: Consumedenergywh
-          type: number
-    FeedthroughEnergy:
-      title: FeedthroughEnergy
-      required:
-      - producedEnergyWh
-      - consumedEnergyWh
-      type: object
-      properties:
-        producedEnergyWh:
-          title: Producedenergywh
-          type: number
-        consumedEnergyWh:
-          title: Consumedenergywh
-          type: number
-    PanelPower:
-      title: PanelPower
-      required:
-      - instantGridPowerW
-      - feedthroughPowerW
-      type: object
-      properties:
-        instantGridPowerW:
-          title: Instantgridpowerw
-          type: number
-        feedthroughPowerW:
-          title: Feedthroughpowerw
-          type: number
-    RelayStateIn:
-      title: RelayStateIn
-      required:
-      - relayState
-      type: object
-      properties:
-        relayState:
-          $ref: '#/components/schemas/RelayState'
-    RelayState:
-      title: RelayState
-      enum:
-      - UNKNOWN
-      - OPEN
-      - CLOSED
-      type: string
-      description: An enumeration.
-    Branch:
-      title: Branch
-      required:
-      - id
-      - relayState
-      - instantPowerW
-      - importedActiveEnergyWh
-      - exportedActiveEnergyWh
-      type: object
-      properties:
-        id:
-          title: Id
-          type: integer
-        relayState:
-          $ref: '#/components/schemas/RelayState'
-        instantPowerW:
-          title: Instantpowerw
-          type: number
-        importedActiveEnergyWh:
-          title: Importedactiveenergywh
-          type: number
-        exportedActiveEnergyWh:
-          title: Exportedactiveenergywh
-          type: number
-    PanelMeter:
-      title: PanelMeter
-      required:
-      - mainMeter
-      - feedthrough
-      type: object
-      properties:
-        mainMeter:
-          $ref: '#/components/schemas/MainMeterEnergy'
-        feedthrough:
-          $ref: '#/components/schemas/FeedthroughEnergy'
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      properties:
-        detail:
-          title: Detail
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
     RelayStateOut:
       title: RelayStateOut
       required:
@@ -282,6 +237,51 @@ components:
         type:
           title: Error Type
           type: string
+    Branch:
+      title: Branch
+      required:
+      - id
+      - relayState
+      - instantPowerW
+      - importedActiveEnergyWh
+      - exportedActiveEnergyWh
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+        relayState:
+          $ref: '#/components/schemas/RelayState'
+        instantPowerW:
+          title: Instantpowerw
+          type: number
+        importedActiveEnergyWh:
+          title: Importedactiveenergywh
+          type: number
+        exportedActiveEnergyWh:
+          title: Exportedactiveenergywh
+          type: number
+    RelayStateIn:
+      title: RelayStateIn
+      required:
+      - relayState
+      type: object
+      properties:
+        relayState:
+          $ref: '#/components/schemas/RelayState'
+    PanelPower:
+      title: PanelPower
+      required:
+      - instantGridPowerW
+      - feedthroughPowerW
+      type: object
+      properties:
+        instantGridPowerW:
+          title: Instantgridpowerw
+          type: number
+        feedthroughPowerW:
+          title: Feedthroughpowerw
+          type: number
   securitySchemes:
     HTTPBearer:
       type: http
