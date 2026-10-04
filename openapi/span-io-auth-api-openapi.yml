@@ -105,15 +105,43 @@ paths:
       - Auth
 components:
   schemas:
-    HTTPValidationError:
-      title: HTTPValidationError
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
       type: object
       properties:
-        detail:
-          title: Detail
+        loc:
+          title: Location
           type: array
           items:
-            $ref: '#/components/schemas/ValidationError'
+            type: string
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+    AuthIn:
+      title: AuthIn
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+        description:
+          title: Description
+          type: string
+        otp:
+          title: Otp
+          type: string
+        dashboardPassword:
+          title: Dashboardpassword
+          type: string
     AllowedEndpointGroups:
       title: AllowedEndpointGroups
       required:
@@ -157,43 +185,6 @@ components:
           type: integer
         allowed_endpoint_groups:
           $ref: '#/components/schemas/AllowedEndpointGroups'
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      properties:
-        loc:
-          title: Location
-          type: array
-          items:
-            type: string
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
-    AuthIn:
-      title: AuthIn
-      required:
-      - name
-      type: object
-      properties:
-        name:
-          title: Name
-          type: string
-        description:
-          title: Description
-          type: string
-        otp:
-          title: Otp
-          type: string
-        dashboardPassword:
-          title: Dashboardpassword
-          type: string
     Clients:
       title: Clients
       required:
@@ -222,6 +213,15 @@ components:
         iatMs:
           title: Iatms
           type: integer
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
   securitySchemes:
     HTTPBearer:
       type: http
