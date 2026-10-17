@@ -23,20 +23,6 @@ paths:
       - Status
 components:
   schemas:
-    StatusOut:
-      title: StatusOut
-      required:
-      - software
-      - system
-      - network
-      type: object
-      properties:
-        software:
-          $ref: '#/components/schemas/SoftwareStatus'
-        system:
-          $ref: '#/components/schemas/SystemStatus'
-        network:
-          $ref: '#/components/schemas/NetworkStatus'
     SystemStatus:
       title: SystemStatus
       required:
@@ -82,6 +68,20 @@ components:
         env:
           title: Env
           type: string
+    StatusOut:
+      title: StatusOut
+      required:
+      - software
+      - system
+      - network
+      type: object
+      properties:
+        software:
+          $ref: '#/components/schemas/SoftwareStatus'
+        system:
+          $ref: '#/components/schemas/SystemStatus'
+        network:
+          $ref: '#/components/schemas/NetworkStatus'
     NetworkStatus:
       title: NetworkStatus
       required:
