@@ -106,7 +106,7 @@ apis:
   - Homie
   - Electrification Bus
   - eBus
-  - Pub-Sub
+  - Pub/Sub
   - Streaming
   - On-Premises
   - Energy
