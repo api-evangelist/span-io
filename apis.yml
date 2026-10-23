@@ -283,6 +283,8 @@ apis:
   - type: JSONLD
     url: json-ld/span-context.jsonld
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/span/overview
   - type: ContributionGuide
     url: https://github.com/spanio/SPAN-API-Client-Docs/blob/main/CONTRIBUTING.md
   - type: AgenticAccess
