@@ -1,285 +1,328 @@
 {
+  "info": {
+    "_postman_id": "39402a7e-bc85-497c-a767-73854436ecf2",
+    "name": "Span Wifi API",
+    "description": "Span Panel REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:47:13.000Z",
+    "updatedAt": "2026-10-22T01:47:14.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-39402a7e-bc85-497c-a767-73854436ecf2"
+  },
   "item": [
     {
-      "id": "d3f9a048-00cf-4640-8d33-36bd89ba6895",
-      "name": "Wifi",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "d9577296-2387-4460-b8f5-65e26f5981cf",
-          "name": "Get Wifi Scan",
-          "request": {
-            "name": "Get Wifi Scan",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "wifi",
-                "scan"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "2f1690b8-50a2-4140-a0f1-70097221cb76",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "wifi",
-                    "scan"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "wifi",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "scan",
+                  "item": [
+                    {
+                      "name": "Get Wifi Scan",
+                      "id": "236c34a2-e572-4925-bf28-78a3a28fca22",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/wifi/scan",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "wifi",
+                            "scan"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "e61c6af6-4bb9-4341-98ad-53e132d89168",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/wifi/scan",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "wifi",
+                                "scan"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"accessPoints\": [\n    {\n      \"bssid\": \"<string>\",\n      \"ssid\": \"<string>\",\n      \"signal\": \"<integer>\",\n      \"frequency\": \"<string>\",\n      \"encrypted\": \"<boolean>\",\n      \"connected\": \"<boolean>\",\n      \"error\": \"\"\n    },\n    {\n      \"bssid\": \"<string>\",\n      \"ssid\": \"<string>\",\n      \"signal\": \"<integer>\",\n      \"frequency\": \"<string>\",\n      \"encrypted\": \"<boolean>\",\n      \"connected\": \"<boolean>\",\n      \"error\": \"\"\n    }\n  ]\n}",
+                          "createdAt": "2026-10-22T01:47:14.000Z",
+                          "updatedAt": "2026-10-22T01:47:14.000Z",
+                          "uid": "35240-e61c6af6-4bb9-4341-98ad-53e132d89168"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:47:14.000Z",
+                      "updatedAt": "2026-10-22T01:47:14.000Z",
+                      "uid": "35240-236c34a2-e572-4925-bf28-78a3a28fca22"
+                    }
+                  ],
+                  "id": "8e58ffbc-ecac-448c-855d-6710bc35dcec",
+                  "createdAt": "2026-10-22T01:47:14.000Z",
+                  "updatedAt": "2026-10-22T01:47:14.000Z",
+                  "uid": "35240-8e58ffbc-ecac-448c-855d-6710bc35dcec"
+                },
+                {
+                  "name": "connect",
+                  "item": [
+                    {
+                      "name": "Run Wifi Connect",
+                      "id": "94c0cc70-2ee4-44e9-87a0-138a761562c9",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"ssid\": \"<string>\",\n  \"psk\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/wifi/connect",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "wifi",
+                            "connect"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "6c6e7dde-1be2-479f-bf2a-9f329ef65b2a",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"ssid\": \"<string>\",\n  \"psk\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/wifi/connect",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "wifi",
+                                "connect"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"bssid\": \"<string>\",\n  \"ssid\": \"<string>\",\n  \"signal\": \"<integer>\",\n  \"encrypted\": \"<boolean>\",\n  \"connected\": \"<boolean>\",\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:47:14.000Z",
+                          "updatedAt": "2026-10-22T01:47:14.000Z",
+                          "uid": "35240-6c6e7dde-1be2-479f-bf2a-9f329ef65b2a"
+                        },
+                        {
+                          "id": "82842b96-8598-453d-98e5-08207232f097",
+                          "name": "Validation Error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"ssid\": \"<string>\",\n  \"psk\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/wifi/connect",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "wifi",
+                                "connect"
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-10-22T01:47:14.000Z",
+                          "updatedAt": "2026-10-22T01:47:14.000Z",
+                          "uid": "35240-82842b96-8598-453d-98e5-08207232f097"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:47:14.000Z",
+                      "updatedAt": "2026-10-22T01:47:14.000Z",
+                      "uid": "35240-94c0cc70-2ee4-44e9-87a0-138a761562c9"
+                    }
+                  ],
+                  "id": "4afda03d-f57a-4e04-8480-132f4ebc1208",
+                  "createdAt": "2026-10-22T01:47:14.000Z",
+                  "updatedAt": "2026-10-22T01:47:14.000Z",
+                  "uid": "35240-4afda03d-f57a-4e04-8480-132f4ebc1208"
                 }
               ],
-              "body": "{\n  \"accessPoints\": [\n    {\n      \"bssid\": \"string\",\n      \"ssid\": \"string\",\n      \"signal\": 4147,\n      \"frequency\": \"string\",\n      \"encrypted\": false,\n      \"connected\": false,\n      \"error\": \"\"\n    },\n    {\n      \"bssid\": \"string\",\n      \"ssid\": \"string\",\n      \"signal\": 7578,\n      \"frequency\": \"string\",\n      \"encrypted\": false,\n      \"connected\": false,\n      \"error\": \"\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "731808de-9677-471c-b4af-409fb4785cc0",
+              "createdAt": "2026-10-22T01:47:14.000Z",
+              "updatedAt": "2026-10-22T01:47:14.000Z",
+              "uid": "35240-731808de-9677-471c-b4af-409fb4785cc0"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "322b2475-4878-423e-857c-bc1c16308867",
-          "name": "Run Wifi Connect",
-          "request": {
-            "name": "Run Wifi Connect",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "wifi",
-                "connect"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"ssid\": \"<string>\",\n  \"psk\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "43cb5993-6fa5-407f-bb36-70c9a60767ab",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "wifi",
-                    "connect"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"ssid\": \"<string>\",\n  \"psk\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"bssid\": \"string\",\n  \"ssid\": \"string\",\n  \"signal\": 8466,\n  \"encrypted\": true,\n  \"connected\": true,\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "0a2a3b00-1604-44dd-8541-6ccf57cf908c",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "wifi",
-                    "connect"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"ssid\": \"<string>\",\n  \"psk\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "4311b8d0-5e0f-48e0-bcf0-62561bd9e92c",
+          "createdAt": "2026-10-22T01:47:14.000Z",
+          "updatedAt": "2026-10-22T01:47:14.000Z",
+          "uid": "35240-4311b8d0-5e0f-48e0-bcf0-62561bd9e92c"
         }
       ],
-      "event": []
+      "id": "527a17a9-856a-4ba8-ba8d-f1e2dfabbd24",
+      "createdAt": "2026-10-22T01:47:14.000Z",
+      "updatedAt": "2026-10-22T01:47:14.000Z",
+      "uid": "35240-527a17a9-856a-4ba8-ba8d-f1e2dfabbd24"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "/"
     }
-  ],
-  "info": {
-    "_postman_id": "60ff3e26-5389-42ad-a5f8-02fd590fcf53",
-    "name": "Span Auth Wifi API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Span Panel REST API",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

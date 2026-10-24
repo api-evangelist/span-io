@@ -1,639 +1,696 @@
 {
+  "info": {
+    "_postman_id": "eb60e6ad-ddde-43d3-a091-c8fe78a117c6",
+    "name": "Span Panel API",
+    "description": "Span Panel REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:46:46.000Z",
+    "updatedAt": "2026-10-22T01:46:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-eb60e6ad-ddde-43d3-a091-c8fe78a117c6"
+  },
   "item": [
     {
-      "id": "b80a2728-5a01-4549-b264-3b1bd3f05623",
-      "name": "Panel",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "256ce2f5-0405-4b68-bf18-0422db91794b",
-          "name": "Get Panel State",
-          "request": {
-            "name": "Get Panel State",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "panel"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "531d53e7-5ba2-4d00-819a-0f0d09ff5743",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "panel"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+              "name": "panel",
+              "item": [
+                {
+                  "name": "grid",
+                  "item": [
+                    {
+                      "name": "Get Main Relay State",
+                      "id": "11a783db-8a00-478d-b20f-713a6156ab24",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/panel/grid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "panel",
+                            "grid"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "fda2a053-8109-464c-a598-b1b2cedcf40a",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/panel/grid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "panel",
+                                "grid"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"relayState\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:46:46.000Z",
+                          "updatedAt": "2026-10-22T01:46:46.000Z",
+                          "uid": "35240-fda2a053-8109-464c-a598-b1b2cedcf40a"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:46:46.000Z",
+                      "updatedAt": "2026-10-22T01:46:46.000Z",
+                      "uid": "35240-11a783db-8a00-478d-b20f-713a6156ab24"
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"mainRelayState\": \"UNKNOWN\",\n  \"mainMeterEnergy\": {\n    \"producedEnergyWh\": 1832.1705585923853,\n    \"consumedEnergyWh\": 2071.3453372832323\n  },\n  \"instantGridPowerW\": 6083.051690633644,\n  \"feedthroughPowerW\": 9186.25103739567,\n  \"feedthroughEnergy\": {\n    \"producedEnergyWh\": 5204.069699495877,\n    \"consumedEnergyWh\": 3751.114116544564\n  },\n  \"gridSampleStartMs\": 7679,\n  \"gridSampleEndMs\": 2243,\n  \"dsmGridState\": \"string\",\n  \"dsmState\": \"string\",\n  \"currentRunConfig\": \"string\",\n  \"branches\": [\n    {\n      \"id\": 2067,\n      \"relayState\": \"UNKNOWN\",\n      \"instantPowerW\": 2244.125138049726,\n      \"importedActiveEnergyWh\": 8211.619116749232,\n      \"exportedActiveEnergyWh\": 3766.4972107044805\n    },\n    {\n      \"id\": 6526,\n      \"relayState\": \"CLOSED\",\n      \"instantPowerW\": 3874.036669176071,\n      \"importedActiveEnergyWh\": 4561.068587114203,\n      \"exportedActiveEnergyWh\": 4058.4096277504955\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "f9a5b2f8-6bba-48a6-992b-10b5504b9d9e",
-          "name": "Get Main Relay State",
-          "request": {
-            "name": "Get Main Relay State",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "panel",
-                "grid"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "9f624f5b-8381-4cea-832a-b516af74119d",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "panel",
-                    "grid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"relayState\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "681321a2-d4b3-4318-a590-c5342d8fcaff",
-          "name": "Set Main Relay State",
-          "request": {
-            "name": "Set Main Relay State",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "panel",
-                "grid"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"relayState\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "161549ac-e21e-4055-ab8a-50fd308cbf32",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "panel",
-                    "grid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"relayState\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
+                    {
+                      "name": "Set Main Relay State",
+                      "id": "b6f856d2-449f-4109-ada4-aa067882d9df",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"relayState\": \"UNKNOWN\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/panel/grid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "panel",
+                            "grid"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "701325eb-7fac-4caf-98a4-2bb03efcd73c",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"relayState\": \"UNKNOWN\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/panel/grid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "panel",
+                                "grid"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-10-22T01:46:46.000Z",
+                          "updatedAt": "2026-10-22T01:46:46.000Z",
+                          "uid": "35240-701325eb-7fac-4caf-98a4-2bb03efcd73c"
+                        },
+                        {
+                          "id": "48d41589-eb3d-40cd-b46d-fabfb64002cd",
+                          "name": "Validation Error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"relayState\": \"UNKNOWN\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/panel/grid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "panel",
+                                "grid"
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-10-22T01:46:46.000Z",
+                          "updatedAt": "2026-10-22T01:46:46.000Z",
+                          "uid": "35240-48d41589-eb3d-40cd-b46d-fabfb64002cd"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:46:46.000Z",
+                      "updatedAt": "2026-10-22T01:46:46.000Z",
+                      "uid": "35240-b6f856d2-449f-4109-ada4-aa067882d9df"
                     }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "be1c36fb-953f-4155-bcd7-d5b0b4a41555",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "panel",
-                    "grid"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+                  "id": "8c6fb620-a027-4a02-8a91-c1b939919068",
+                  "createdAt": "2026-10-22T01:46:46.000Z",
+                  "updatedAt": "2026-10-22T01:46:46.000Z",
+                  "uid": "35240-8c6fb620-a027-4a02-8a91-c1b939919068"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"relayState\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
+                {
+                  "name": "power",
+                  "item": [
+                    {
+                      "name": "Get Panel Power",
+                      "id": "f6cab2b4-51fc-4102-885b-ce6a05d9da9f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/panel/power",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "panel",
+                            "power"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "813f595c-fa5f-4a52-8ad3-020618a7c277",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/panel/power",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "panel",
+                                "power"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"instantGridPowerW\": \"<number>\",\n  \"feedthroughPowerW\": \"<number>\"\n}",
+                          "createdAt": "2026-10-22T01:46:46.000Z",
+                          "updatedAt": "2026-10-22T01:46:46.000Z",
+                          "uid": "35240-813f595c-fa5f-4a52-8ad3-020618a7c277"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:46:46.000Z",
+                      "updatedAt": "2026-10-22T01:46:46.000Z",
+                      "uid": "35240-f6cab2b4-51fc-4102-885b-ce6a05d9da9f"
                     }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "6355cb58-b418-46b5-9ccd-175390c34017",
-          "name": "Get Panel Power",
-          "request": {
-            "name": "Get Panel Power",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "panel",
-                "power"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "ca30823e-6ed8-4412-abfa-0d3739e928b5",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "panel",
-                    "power"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+                  "id": "cdc33242-9657-43fe-916d-ab5485f51aa3",
+                  "createdAt": "2026-10-22T01:46:46.000Z",
+                  "updatedAt": "2026-10-22T01:46:46.000Z",
+                  "uid": "35240-cdc33242-9657-43fe-916d-ab5485f51aa3"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"instantGridPowerW\": 3562.2144717666492,\n  \"feedthroughPowerW\": 697.9655769300441\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "8614262b-736b-4c83-8bec-c3dbb7a8d7cd",
-          "name": "Get Panel Meter",
-          "request": {
-            "name": "Get Panel Meter",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "panel",
-                "meter"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "3075e174-b44f-46c8-8356-ed52236e96f3",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "panel",
-                    "meter"
+                  "name": "meter",
+                  "item": [
+                    {
+                      "name": "Get Panel Meter",
+                      "id": "f62261ea-e4f4-484f-943b-cb8657921452",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/panel/meter",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "panel",
+                            "meter"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "612f848c-eee2-473d-8e99-d43bd70ea70d",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/panel/meter",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "panel",
+                                "meter"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"mainMeter\": {\n    \"producedEnergyWh\": \"<number>\",\n    \"consumedEnergyWh\": \"<number>\"\n  },\n  \"feedthrough\": {\n    \"producedEnergyWh\": \"<number>\",\n    \"consumedEnergyWh\": \"<number>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:46:46.000Z",
+                          "updatedAt": "2026-10-22T01:46:46.000Z",
+                          "uid": "35240-612f848c-eee2-473d-8e99-d43bd70ea70d"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:46:46.000Z",
+                      "updatedAt": "2026-10-22T01:46:46.000Z",
+                      "uid": "35240-f62261ea-e4f4-484f-943b-cb8657921452"
+                    }
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+                  "id": "2f755715-9da6-4e43-86e2-5ed3703b214a",
+                  "createdAt": "2026-10-22T01:46:46.000Z",
+                  "updatedAt": "2026-10-22T01:46:46.000Z",
+                  "uid": "35240-2f755715-9da6-4e43-86e2-5ed3703b214a"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"mainMeter\": {\n    \"producedEnergyWh\": 6997.15932278855,\n    \"consumedEnergyWh\": 5309.304971775605\n  },\n  \"feedthrough\": {\n    \"producedEnergyWh\": 4031.4155833738264,\n    \"consumedEnergyWh\": 7173.857584026374\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e2788387-41d2-4b9b-b4d7-72296de2448d",
-          "name": "Run Panel Emergency Reconnect",
-          "request": {
-            "name": "Run Panel Emergency Reconnect",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "panel",
-                "emergency-reconnect"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "e0f047d0-4b67-408c-9dec-63ec5fd8dae4",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "panel",
-                    "emergency-reconnect"
+                  "name": "emergency-reconnect",
+                  "item": [
+                    {
+                      "name": "Run Panel Emergency Reconnect",
+                      "id": "953d7765-dd13-49a2-9a6d-eec68b66fbff",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/panel/emergency-reconnect",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "panel",
+                            "emergency-reconnect"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "76cce6fd-ffcb-4173-9175-7f38e0b08e49",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/panel/emergency-reconnect",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "panel",
+                                "emergency-reconnect"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-10-22T01:46:46.000Z",
+                          "updatedAt": "2026-10-22T01:46:46.000Z",
+                          "uid": "35240-76cce6fd-ffcb-4173-9175-7f38e0b08e49"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:46:46.000Z",
+                      "updatedAt": "2026-10-22T01:46:46.000Z",
+                      "uid": "35240-953d7765-dd13-49a2-9a6d-eec68b66fbff"
+                    }
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+                  "id": "893c10b4-4564-49d8-ac66-826570baeb3e",
+                  "createdAt": "2026-10-22T01:46:46.000Z",
+                  "updatedAt": "2026-10-22T01:46:46.000Z",
+                  "uid": "35240-893c10b4-4564-49d8-ac66-826570baeb3e"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Get Panel State",
+                  "id": "89dc0021-a95b-4a7b-846d-c8357e2dc84d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/panel",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "panel"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "dc40c105-70fe-4b78-bcdf-6cc6f6c14361",
+                      "name": "Successful Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/panel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "panel"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"mainRelayState\": \"OPEN\",\n  \"mainMeterEnergy\": {\n    \"producedEnergyWh\": \"<number>\",\n    \"consumedEnergyWh\": \"<number>\"\n  },\n  \"instantGridPowerW\": \"<number>\",\n  \"feedthroughPowerW\": \"<number>\",\n  \"feedthroughEnergy\": {\n    \"producedEnergyWh\": \"<number>\",\n    \"consumedEnergyWh\": \"<number>\"\n  },\n  \"gridSampleStartMs\": \"<integer>\",\n  \"gridSampleEndMs\": \"<integer>\",\n  \"dsmGridState\": \"<string>\",\n  \"dsmState\": \"<string>\",\n  \"currentRunConfig\": \"<string>\",\n  \"branches\": [\n    {\n      \"id\": \"<integer>\",\n      \"relayState\": \"CLOSED\",\n      \"instantPowerW\": \"<number>\",\n      \"importedActiveEnergyWh\": \"<number>\",\n      \"exportedActiveEnergyWh\": \"<number>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"relayState\": \"UNKNOWN\",\n      \"instantPowerW\": \"<number>\",\n      \"importedActiveEnergyWh\": \"<number>\",\n      \"exportedActiveEnergyWh\": \"<number>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-22T01:46:46.000Z",
+                      "updatedAt": "2026-10-22T01:46:46.000Z",
+                      "uid": "35240-dc40c105-70fe-4b78-bcdf-6cc6f6c14361"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:46:46.000Z",
+                  "updatedAt": "2026-10-22T01:46:46.000Z",
+                  "uid": "35240-89dc0021-a95b-4a7b-846d-c8357e2dc84d"
                 }
               ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "3907af44-7ec6-455b-9d4a-5ed8584336dd",
+              "createdAt": "2026-10-22T01:46:46.000Z",
+              "updatedAt": "2026-10-22T01:46:46.000Z",
+              "uid": "35240-3907af44-7ec6-455b-9d4a-5ed8584336dd"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "7a134eb9-a144-4814-8db6-b7dd327b1a7b",
+          "createdAt": "2026-10-22T01:46:46.000Z",
+          "updatedAt": "2026-10-22T01:46:46.000Z",
+          "uid": "35240-7a134eb9-a144-4814-8db6-b7dd327b1a7b"
         }
       ],
-      "event": []
+      "id": "5c057a6e-48c2-4ad8-81a9-cb5c30e2a5a2",
+      "createdAt": "2026-10-22T01:46:46.000Z",
+      "updatedAt": "2026-10-22T01:46:46.000Z",
+      "uid": "35240-5c057a6e-48c2-4ad8-81a9-cb5c30e2a5a2"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "/"
     }
-  ],
-  "info": {
-    "_postman_id": "36188b6e-a9f7-429c-9957-989fb0617411",
-    "name": "Span Auth Panel API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Span Panel REST API",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

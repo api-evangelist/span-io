@@ -1,119 +1,133 @@
 {
+  "info": {
+    "_postman_id": "e53547ca-29a0-43a8-a4f6-02fe5957a0f9",
+    "name": "Span Status API",
+    "description": "Span Panel REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:46:58.000Z",
+    "updatedAt": "2026-10-22T01:46:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e53547ca-29a0-43a8-a4f6-02fe5957a0f9"
+  },
   "item": [
     {
-      "id": "04df5dc1-4223-40ea-bf69-cdc63c340b5d",
-      "name": "Status",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "a341664f-bdf7-4509-9009-a0137bf26c9b",
-          "name": "System Status",
-          "request": {
-            "name": "System Status",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "status"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "7e44e610-8041-48c5-ac2e-ad99e090b93c",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "status"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "status",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "System Status",
+                  "id": "6b6a2cb9-9dd7-4cd3-bc83-870e8eab6963",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/status",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "status"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "98e53e50-bbb6-4f59-b061-f8c737652b42",
+                      "name": "Successful Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/status",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "status"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"software\": {\n    \"firmwareVersion\": \"<string>\",\n    \"updateStatus\": \"<string>\",\n    \"env\": \"<string>\"\n  },\n  \"system\": {\n    \"manufacturer\": \"<string>\",\n    \"serial\": \"<string>\",\n    \"model\": \"<string>\",\n    \"doorState\": \"OPEN\",\n    \"proximityProven\": \"<boolean>\",\n    \"uptime\": \"<integer>\"\n  },\n  \"network\": {\n    \"eth0Link\": \"<boolean>\",\n    \"wlanLink\": \"<boolean>\",\n    \"wwanLink\": \"<boolean>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:46:59.000Z",
+                      "updatedAt": "2026-10-22T01:46:59.000Z",
+                      "uid": "35240-98e53e50-bbb6-4f59-b061-f8c737652b42"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:46:59.000Z",
+                  "updatedAt": "2026-10-22T01:46:59.000Z",
+                  "uid": "35240-6b6a2cb9-9dd7-4cd3-bc83-870e8eab6963"
                 }
               ],
-              "body": "{\n  \"software\": {\n    \"firmwareVersion\": \"string\",\n    \"updateStatus\": \"string\",\n    \"env\": \"string\"\n  },\n  \"system\": {\n    \"manufacturer\": \"string\",\n    \"serial\": \"string\",\n    \"model\": \"string\",\n    \"doorState\": \"OPEN\",\n    \"proximityProven\": false,\n    \"uptime\": 116\n  },\n  \"network\": {\n    \"eth0Link\": false,\n    \"wlanLink\": true,\n    \"wwanLink\": false\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "87ac1f6d-b8e9-4a35-a1e8-acce72c7e75b",
+              "createdAt": "2026-10-22T01:46:59.000Z",
+              "updatedAt": "2026-10-22T01:46:59.000Z",
+              "uid": "35240-87ac1f6d-b8e9-4a35-a1e8-acce72c7e75b"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "0e8819e3-cb65-4716-b48f-b92b32b5f86d",
+          "createdAt": "2026-10-22T01:46:59.000Z",
+          "updatedAt": "2026-10-22T01:46:59.000Z",
+          "uid": "35240-0e8819e3-cb65-4716-b48f-b92b32b5f86d"
         }
       ],
-      "event": []
+      "id": "01aa38ce-fb0e-4b86-b967-abe39236dd11",
+      "createdAt": "2026-10-22T01:46:59.000Z",
+      "updatedAt": "2026-10-22T01:46:59.000Z",
+      "uid": "35240-01aa38ce-fb0e-4b86-b967-abe39236dd11"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "/"
     }
-  ],
-  "info": {
-    "_postman_id": "05cf7a98-d3d2-4c5e-a034-799f7f4f0731",
-    "name": "Span Auth Status API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Span Panel REST API",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

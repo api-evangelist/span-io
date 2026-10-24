@@ -1,538 +1,591 @@
 {
+  "info": {
+    "_postman_id": "6e58e0c0-86df-41dd-8f34-8007db93499b",
+    "name": "Span Storage API",
+    "description": "Span Panel REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:47:07.000Z",
+    "updatedAt": "2026-10-22T01:47:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6e58e0c0-86df-41dd-8f34-8007db93499b"
+  },
   "item": [
     {
-      "id": "94a8eb30-3c88-4108-bca0-5957b29bcfea",
-      "name": "Storage",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "9852ae68-8270-4b4a-81e3-e8e77b602d20",
-          "name": "Get Storage Soe",
-          "request": {
-            "name": "Get Storage Soe",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "storage",
-                "soe"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "ec9c5303-ff47-4a7e-a9fc-752a9907714e",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "storage",
-                    "soe"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "storage",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "soe",
+                  "item": [
+                    {
+                      "name": "Get Storage Soe",
+                      "id": "82b07a2e-6f8f-478d-9b0b-87f1a7a0e5f3",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/storage/soe",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "storage",
+                            "soe"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "e824157c-22aa-476f-bc55-f740eead3764",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/storage/soe",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "storage",
+                                "soe"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"soe\": {\n    \"percentage\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:47:07.000Z",
+                          "updatedAt": "2026-10-22T01:47:07.000Z",
+                          "uid": "35240-e824157c-22aa-476f-bc55-f740eead3764"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:47:07.000Z",
+                      "updatedAt": "2026-10-22T01:47:07.000Z",
+                      "uid": "35240-82b07a2e-6f8f-478d-9b0b-87f1a7a0e5f3"
+                    },
+                    {
+                      "name": "Set Storage Soe",
+                      "id": "b0af7a4d-8d2f-43f8-bc90-f6fb01058982",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"soe\": {\n    \"percentage\": \"<integer>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/storage/soe",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "storage",
+                            "soe"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "d832cca0-75fa-40ce-a3c0-ad3a01309eef",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"soe\": {\n    \"percentage\": \"<integer>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/storage/soe",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "storage",
+                                "soe"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"soe\": {\n    \"percentage\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:47:07.000Z",
+                          "updatedAt": "2026-10-22T01:47:07.000Z",
+                          "uid": "35240-d832cca0-75fa-40ce-a3c0-ad3a01309eef"
+                        },
+                        {
+                          "id": "b9cc62c4-83f1-4075-8753-de5db0f51a32",
+                          "name": "Validation Error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"soe\": {\n    \"percentage\": \"<integer>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/storage/soe",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "storage",
+                                "soe"
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-10-22T01:47:07.000Z",
+                          "updatedAt": "2026-10-22T01:47:07.000Z",
+                          "uid": "35240-b9cc62c4-83f1-4075-8753-de5db0f51a32"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:47:07.000Z",
+                      "updatedAt": "2026-10-22T01:47:07.000Z",
+                      "uid": "35240-b0af7a4d-8d2f-43f8-bc90-f6fb01058982"
+                    }
+                  ],
+                  "id": "f862632a-6313-42c0-a203-80a161577964",
+                  "createdAt": "2026-10-22T01:47:07.000Z",
+                  "updatedAt": "2026-10-22T01:47:07.000Z",
+                  "uid": "35240-f862632a-6313-42c0-a203-80a161577964"
+                },
+                {
+                  "name": "nice-to-have-thresh",
+                  "item": [
+                    {
+                      "name": "Get Storage Nice To Have Threshold",
+                      "id": "5fc26faf-71a3-428b-9bc8-4955f1c5db51",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/storage/nice-to-have-thresh",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "storage",
+                            "nice-to-have-thresh"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "41497213-3df8-4cb2-a059-3826a4903160",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/storage/nice-to-have-thresh",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "storage",
+                                "nice-to-have-thresh"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"nice_to_have_threshold_low_soe\": {\n    \"percentage\": \"<integer>\"\n  },\n  \"nice_to_have_threshold_high_soe\": {\n    \"percentage\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:47:07.000Z",
+                          "updatedAt": "2026-10-22T01:47:07.000Z",
+                          "uid": "35240-41497213-3df8-4cb2-a059-3826a4903160"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:47:07.000Z",
+                      "updatedAt": "2026-10-22T01:47:07.000Z",
+                      "uid": "35240-5fc26faf-71a3-428b-9bc8-4955f1c5db51"
+                    },
+                    {
+                      "name": "Set Storage Nice To Have Threshold",
+                      "id": "b4465740-0af1-49df-84e0-be9215016843",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"nice_to_have_threshold_low_soe\": {\n    \"percentage\": \"<integer>\"\n  },\n  \"nice_to_have_threshold_high_soe\": {\n    \"percentage\": \"<integer>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/storage/nice-to-have-thresh",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "storage",
+                            "nice-to-have-thresh"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "a8fab9e7-ec65-4b58-8308-53aab0a1d65a",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"nice_to_have_threshold_low_soe\": {\n    \"percentage\": \"<integer>\"\n  },\n  \"nice_to_have_threshold_high_soe\": {\n    \"percentage\": \"<integer>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/storage/nice-to-have-thresh",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "storage",
+                                "nice-to-have-thresh"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"nice_to_have_threshold_low_soe\": {\n    \"percentage\": \"<integer>\"\n  },\n  \"nice_to_have_threshold_high_soe\": {\n    \"percentage\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:47:07.000Z",
+                          "updatedAt": "2026-10-22T01:47:07.000Z",
+                          "uid": "35240-a8fab9e7-ec65-4b58-8308-53aab0a1d65a"
+                        },
+                        {
+                          "id": "f60e7d4f-5b76-4941-b8c7-a7566f07099e",
+                          "name": "Validation Error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"nice_to_have_threshold_low_soe\": {\n    \"percentage\": \"<integer>\"\n  },\n  \"nice_to_have_threshold_high_soe\": {\n    \"percentage\": \"<integer>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/storage/nice-to-have-thresh",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "storage",
+                                "nice-to-have-thresh"
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-10-22T01:47:07.000Z",
+                          "updatedAt": "2026-10-22T01:47:07.000Z",
+                          "uid": "35240-f60e7d4f-5b76-4941-b8c7-a7566f07099e"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:47:07.000Z",
+                      "updatedAt": "2026-10-22T01:47:07.000Z",
+                      "uid": "35240-b4465740-0af1-49df-84e0-be9215016843"
+                    }
+                  ],
+                  "id": "2a0a879c-d498-49c8-a013-5621429360a6",
+                  "createdAt": "2026-10-22T01:47:07.000Z",
+                  "updatedAt": "2026-10-22T01:47:07.000Z",
+                  "uid": "35240-2a0a879c-d498-49c8-a013-5621429360a6"
                 }
               ],
-              "body": "{\n  \"soe\": {\n    \"percentage\": 9914\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "2bb0d989-d756-4978-a518-62870bc0444c",
+              "createdAt": "2026-10-22T01:47:07.000Z",
+              "updatedAt": "2026-10-22T01:47:07.000Z",
+              "uid": "35240-2bb0d989-d756-4978-a518-62870bc0444c"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "49099ab9-7286-47db-94e6-92e8f3a350c3",
-          "name": "Set Storage Soe",
-          "request": {
-            "name": "Set Storage Soe",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "storage",
-                "soe"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"soe\": {\n    \"percentage\": \"<integer>\"\n  }\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "3aafb484-54d1-463a-b6db-37971a656a47",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "storage",
-                    "soe"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"soe\": {\n    \"percentage\": \"<integer>\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"soe\": {\n    \"percentage\": \"<integer>\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9bcaeed9-b057-481a-aa7c-255ddd6262a9",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "storage",
-                    "soe"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"soe\": {\n    \"percentage\": \"<integer>\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "dc65be1a-76e2-4aa2-88be-003bd21da3d2",
-          "name": "Get Storage Nice To Have Threshold",
-          "request": {
-            "name": "Get Storage Nice To Have Threshold",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "storage",
-                "nice-to-have-thresh"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "201a8adc-1a5c-4fa0-bc18-debadd78dd35",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "storage",
-                    "nice-to-have-thresh"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"nice_to_have_threshold_low_soe\": {\n    \"percentage\": \"<integer>\"\n  },\n  \"nice_to_have_threshold_high_soe\": {\n    \"percentage\": \"<integer>\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "54da8ec5-fc52-4a9d-976a-66e2bc34fb22",
-          "name": "Set Storage Nice To Have Threshold",
-          "request": {
-            "name": "Set Storage Nice To Have Threshold",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "storage",
-                "nice-to-have-thresh"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"nice_to_have_threshold_low_soe\": {\n    \"percentage\": \"<integer>\"\n  },\n  \"nice_to_have_threshold_high_soe\": {\n    \"percentage\": \"<integer>\"\n  }\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "f5943bf6-2419-4570-8993-5e8de95d117e",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "storage",
-                    "nice-to-have-thresh"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"nice_to_have_threshold_low_soe\": {\n    \"percentage\": \"<integer>\"\n  },\n  \"nice_to_have_threshold_high_soe\": {\n    \"percentage\": \"<integer>\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"nice_to_have_threshold_low_soe\": {\n    \"percentage\": \"<integer>\"\n  },\n  \"nice_to_have_threshold_high_soe\": {\n    \"percentage\": \"<integer>\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "af1baa8d-fcbf-474b-a8ce-99d0ed36e80e",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "storage",
-                    "nice-to-have-thresh"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"nice_to_have_threshold_low_soe\": {\n    \"percentage\": \"<integer>\"\n  },\n  \"nice_to_have_threshold_high_soe\": {\n    \"percentage\": \"<integer>\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "b065911c-c37a-440f-84e6-a252625a4b0d",
+          "createdAt": "2026-10-22T01:47:07.000Z",
+          "updatedAt": "2026-10-22T01:47:07.000Z",
+          "uid": "35240-b065911c-c37a-440f-84e6-a252625a4b0d"
         }
       ],
-      "event": []
+      "id": "df73c3cd-a550-4f1c-ae8b-97af0571fb42",
+      "createdAt": "2026-10-22T01:47:07.000Z",
+      "updatedAt": "2026-10-22T01:47:07.000Z",
+      "uid": "35240-df73c3cd-a550-4f1c-ae8b-97af0571fb42"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "/"
     }
-  ],
-  "info": {
-    "_postman_id": "94b44ad1-6512-4ab8-9ed9-851063fe012d",
-    "name": "Span Auth Storage API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Span Panel REST API",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

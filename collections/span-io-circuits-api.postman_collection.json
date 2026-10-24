@@ -1,466 +1,486 @@
 {
+  "info": {
+    "_postman_id": "51da78d3-2cb1-47e2-abc2-163e5bfd3511",
+    "name": "Span Circuits API",
+    "description": "Span Panel REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:46:36.000Z",
+    "updatedAt": "2026-10-22T01:46:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-51da78d3-2cb1-47e2-abc2-163e5bfd3511"
+  },
   "item": [
     {
-      "id": "9ce598d4-8811-4260-9367-2dccb2f934d2",
-      "name": "Circuits",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "a69197cd-e1cf-4314-8f3e-72e5295fee5c",
-          "name": "Get Circuits",
-          "request": {
-            "name": "Get Circuits",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "circuits"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "2ced49b0-764e-4dd7-a5f2-a62e29d92b9a",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "circuits"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "circuits",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "{circuitId}",
+                  "item": [
+                    {
+                      "name": "Get Circuit State",
+                      "id": "cfb814f2-c551-478d-ad3c-cb93fc3b7e49",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/circuits/:circuitId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "circuits",
+                            ":circuitId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "ffe2549a-2361-4453-b4de-ef85ea01ee10",
+                              "key": "circuitId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "bcbde427-407c-4fea-bb59-c9fbbf887fff",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/circuits/:circuitId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "circuits",
+                                ":circuitId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "circuitId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"relayState\": \"UNKNOWN\",\n  \"instantPowerW\": \"<number>\",\n  \"instantPowerUpdateTimeS\": \"<integer>\",\n  \"producedEnergyWh\": \"<number>\",\n  \"consumedEnergyWh\": \"<number>\",\n  \"energyAccumUpdateTimeS\": \"<integer>\",\n  \"priority\": \"NON_ESSENTIAL\",\n  \"isUserControllable\": \"<boolean>\",\n  \"isSheddable\": \"<boolean>\",\n  \"isNeverBackup\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"tabs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                          "createdAt": "2026-10-22T01:46:37.000Z",
+                          "updatedAt": "2026-10-22T01:46:37.000Z",
+                          "uid": "35240-bcbde427-407c-4fea-bb59-c9fbbf887fff"
+                        },
+                        {
+                          "id": "2a75f499-4e79-46c0-b8c3-4088e8ea046f",
+                          "name": "Validation Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/circuits/:circuitId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "circuits",
+                                ":circuitId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "circuitId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-10-22T01:46:37.000Z",
+                          "updatedAt": "2026-10-22T01:46:37.000Z",
+                          "uid": "35240-2a75f499-4e79-46c0-b8c3-4088e8ea046f"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:46:37.000Z",
+                      "updatedAt": "2026-10-22T01:46:37.000Z",
+                      "uid": "35240-cfb814f2-c551-478d-ad3c-cb93fc3b7e49"
+                    },
+                    {
+                      "name": "Set Circuit State",
+                      "id": "01884f6b-a5ab-477e-9137-67b061ab2b4a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"relayStateIn\": {\n    \"relayState\": \"UNKNOWN\"\n  },\n  \"priorityIn\": {\n    \"priority\": \"MUST_HAVE\"\n  },\n  \"circuitNameIn\": {\n    \"name\": \"<string>\"\n  },\n  \"userControllableIn\": {\n    \"value\": \"<boolean>\"\n  },\n  \"sheddableIn\": {\n    \"value\": \"<boolean>\"\n  },\n  \"neverBackupIn\": {\n    \"value\": \"<boolean>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/circuits/:circuitId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "circuits",
+                            ":circuitId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "12d6114f-fc9e-48fa-9789-7d3f270ea222",
+                              "key": "circuitId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "4c96370c-dc48-4ea1-8d62-a47b5575b73b",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"relayStateIn\": {\n    \"relayState\": \"UNKNOWN\"\n  },\n  \"priorityIn\": {\n    \"priority\": \"MUST_HAVE\"\n  },\n  \"circuitNameIn\": {\n    \"name\": \"<string>\"\n  },\n  \"userControllableIn\": {\n    \"value\": \"<boolean>\"\n  },\n  \"sheddableIn\": {\n    \"value\": \"<boolean>\"\n  },\n  \"neverBackupIn\": {\n    \"value\": \"<boolean>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/circuits/:circuitId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "circuits",
+                                ":circuitId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "circuitId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"relayState\": \"UNKNOWN\",\n  \"instantPowerW\": \"<number>\",\n  \"instantPowerUpdateTimeS\": \"<integer>\",\n  \"producedEnergyWh\": \"<number>\",\n  \"consumedEnergyWh\": \"<number>\",\n  \"energyAccumUpdateTimeS\": \"<integer>\",\n  \"priority\": \"NON_ESSENTIAL\",\n  \"isUserControllable\": \"<boolean>\",\n  \"isSheddable\": \"<boolean>\",\n  \"isNeverBackup\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"tabs\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                          "createdAt": "2026-10-22T01:46:37.000Z",
+                          "updatedAt": "2026-10-22T01:46:37.000Z",
+                          "uid": "35240-4c96370c-dc48-4ea1-8d62-a47b5575b73b"
+                        },
+                        {
+                          "id": "8d2b5b5a-0dde-4015-a38c-3bce8d55b831",
+                          "name": "Validation Error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"relayStateIn\": {\n    \"relayState\": \"UNKNOWN\"\n  },\n  \"priorityIn\": {\n    \"priority\": \"MUST_HAVE\"\n  },\n  \"circuitNameIn\": {\n    \"name\": \"<string>\"\n  },\n  \"userControllableIn\": {\n    \"value\": \"<boolean>\"\n  },\n  \"sheddableIn\": {\n    \"value\": \"<boolean>\"\n  },\n  \"neverBackupIn\": {\n    \"value\": \"<boolean>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/circuits/:circuitId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "circuits",
+                                ":circuitId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "circuitId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-10-22T01:46:37.000Z",
+                          "updatedAt": "2026-10-22T01:46:37.000Z",
+                          "uid": "35240-8d2b5b5a-0dde-4015-a38c-3bce8d55b831"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:46:37.000Z",
+                      "updatedAt": "2026-10-22T01:46:37.000Z",
+                      "uid": "35240-01884f6b-a5ab-477e-9137-67b061ab2b4a"
+                    }
+                  ],
+                  "id": "97465613-e399-43ab-b4c7-485d0bddbb1a",
+                  "createdAt": "2026-10-22T01:46:37.000Z",
+                  "updatedAt": "2026-10-22T01:46:37.000Z",
+                  "uid": "35240-97465613-e399-43ab-b4c7-485d0bddbb1a"
+                },
+                {
+                  "name": "Get Circuits",
+                  "id": "2a99b00a-3e4a-4d03-aeea-f988a5a72ad0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/circuits",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "circuits"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "1e9a0bad-a265-4dec-9d69-038f5d572992",
+                      "name": "Successful Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/circuits",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "circuits"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"circuits\": {\n    \"dolor080\": {\n      \"id\": \"<string>\",\n      \"relayState\": \"CLOSED\",\n      \"instantPowerW\": \"<number>\",\n      \"instantPowerUpdateTimeS\": \"<integer>\",\n      \"producedEnergyWh\": \"<number>\",\n      \"consumedEnergyWh\": \"<number>\",\n      \"energyAccumUpdateTimeS\": \"<integer>\",\n      \"priority\": \"NON_ESSENTIAL\",\n      \"isUserControllable\": \"<boolean>\",\n      \"isSheddable\": \"<boolean>\",\n      \"isNeverBackup\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"tabs\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    }\n  }\n}",
+                      "createdAt": "2026-10-22T01:46:37.000Z",
+                      "updatedAt": "2026-10-22T01:46:37.000Z",
+                      "uid": "35240-1e9a0bad-a265-4dec-9d69-038f5d572992"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:46:37.000Z",
+                  "updatedAt": "2026-10-22T01:46:37.000Z",
+                  "uid": "35240-2a99b00a-3e4a-4d03-aeea-f988a5a72ad0"
                 }
               ],
-              "body": "{\n  \"circuits\": {\n    \"key_0\": {\n      \"id\": \"string\",\n      \"relayState\": \"CLOSED\",\n      \"instantPowerW\": 1937.1341272015252,\n      \"instantPowerUpdateTimeS\": 1712,\n      \"producedEnergyWh\": 2390.2181650916523,\n      \"consumedEnergyWh\": 6086.721007892015,\n      \"energyAccumUpdateTimeS\": 4113,\n      \"priority\": \"UNKNOWN\",\n      \"isUserControllable\": true,\n      \"isSheddable\": true,\n      \"isNeverBackup\": false,\n      \"name\": \"string\",\n      \"tabs\": [\n        187,\n        1918\n      ]\n    },\n    \"key_1\": {\n      \"id\": \"string\",\n      \"relayState\": \"OPEN\",\n      \"instantPowerW\": 871.0331674138394,\n      \"instantPowerUpdateTimeS\": 5383,\n      \"producedEnergyWh\": 2383.0005802950304,\n      \"consumedEnergyWh\": 5952.1463525019,\n      \"energyAccumUpdateTimeS\": 3279,\n      \"priority\": \"NON_ESSENTIAL\",\n      \"isUserControllable\": true,\n      \"isSheddable\": true,\n      \"isNeverBackup\": true,\n      \"name\": \"string\",\n      \"tabs\": [\n        5139,\n        7460\n      ]\n    }\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "be97bb8f-d303-4667-b1df-0ac3932b13f4",
+              "createdAt": "2026-10-22T01:46:37.000Z",
+              "updatedAt": "2026-10-22T01:46:37.000Z",
+              "uid": "35240-be97bb8f-d303-4667-b1df-0ac3932b13f4"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "bfdbfbe1-ca7f-4b26-8c5c-c93046eea44a",
-          "name": "Get Circuit State",
-          "request": {
-            "name": "Get Circuit State",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "circuits",
-                ":circuitId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "circuitId",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "54927f27-afaa-4edf-ab35-60fed75b9d15",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "circuits",
-                    ":circuitId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "circuitId",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"relayState\": \"OPEN\",\n  \"instantPowerW\": 1137.785978958936,\n  \"instantPowerUpdateTimeS\": 7932,\n  \"producedEnergyWh\": 5779.015366213363,\n  \"consumedEnergyWh\": 1507.568175172308,\n  \"energyAccumUpdateTimeS\": 250,\n  \"priority\": \"UNKNOWN\",\n  \"isUserControllable\": true,\n  \"isSheddable\": false,\n  \"isNeverBackup\": true,\n  \"name\": \"string\",\n  \"tabs\": [\n    2358,\n    3259\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f2ea77fb-5350-436a-9840-5ba17dfdb93f",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "circuits",
-                    ":circuitId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "circuitId",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "8aa9f356-4a64-4a83-bfc9-29bfdc8d7c0f",
-          "name": "Set Circuit State",
-          "request": {
-            "name": "Set Circuit State",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "circuits",
-                ":circuitId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "circuitId",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"relayStateIn\": {\n    \"relayState\": \"<string>\"\n  },\n  \"priorityIn\": {\n    \"priority\": \"<string>\"\n  },\n  \"circuitNameIn\": {\n    \"name\": \"<string>\"\n  },\n  \"userControllableIn\": {\n    \"value\": \"<boolean>\"\n  },\n  \"sheddableIn\": {\n    \"value\": \"<boolean>\"\n  },\n  \"neverBackupIn\": {\n    \"value\": \"<boolean>\"\n  }\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "a9c3d559-84aa-44a8-a2ca-31ba49dce107",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "circuits",
-                    ":circuitId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "circuitId",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"relayStateIn\": {\n    \"relayState\": \"<string>\"\n  },\n  \"priorityIn\": {\n    \"priority\": \"<string>\"\n  },\n  \"circuitNameIn\": {\n    \"name\": \"<string>\"\n  },\n  \"userControllableIn\": {\n    \"value\": \"<boolean>\"\n  },\n  \"sheddableIn\": {\n    \"value\": \"<boolean>\"\n  },\n  \"neverBackupIn\": {\n    \"value\": \"<boolean>\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"relayState\": \"<string>\",\n  \"instantPowerW\": 3059.732708548093,\n  \"instantPowerUpdateTimeS\": 642,\n  \"producedEnergyWh\": 7217.773421248547,\n  \"consumedEnergyWh\": 1238.5980839717138,\n  \"energyAccumUpdateTimeS\": 2295,\n  \"priority\": \"<string>\",\n  \"isUserControllable\": false,\n  \"isSheddable\": true,\n  \"isNeverBackup\": true,\n  \"name\": \"string\",\n  \"tabs\": [\n    3938,\n    8005\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "3e2b6aea-fc82-47b2-a018-d561600b23f9",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "circuits",
-                    ":circuitId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "circuitId",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"relayStateIn\": {\n    \"relayState\": \"<string>\"\n  },\n  \"priorityIn\": {\n    \"priority\": \"<string>\"\n  },\n  \"circuitNameIn\": {\n    \"name\": \"<string>\"\n  },\n  \"userControllableIn\": {\n    \"value\": \"<boolean>\"\n  },\n  \"sheddableIn\": {\n    \"value\": \"<boolean>\"\n  },\n  \"neverBackupIn\": {\n    \"value\": \"<boolean>\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "c8cea47f-6f22-4b53-80f8-ed25f7d8d0af",
+          "createdAt": "2026-10-22T01:46:37.000Z",
+          "updatedAt": "2026-10-22T01:46:37.000Z",
+          "uid": "35240-c8cea47f-6f22-4b53-80f8-ed25f7d8d0af"
         }
       ],
-      "event": []
+      "id": "e1ff0a1d-1c63-4a43-9041-422c0582eac0",
+      "createdAt": "2026-10-22T01:46:37.000Z",
+      "updatedAt": "2026-10-22T01:46:37.000Z",
+      "uid": "35240-e1ff0a1d-1c63-4a43-9041-422c0582eac0"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "/"
     }
-  ],
-  "info": {
-    "_postman_id": "ba8318b0-c9bf-4775-9446-5fbbf0524e3f",
-    "name": "Span Auth Circuits API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Span Panel REST API",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

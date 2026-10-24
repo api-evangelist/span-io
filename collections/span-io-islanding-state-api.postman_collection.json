@@ -1,119 +1,133 @@
 {
+  "info": {
+    "_postman_id": "2ba788ef-6d09-4eb9-a62d-9baa787316ee",
+    "name": "Span Islanding State API",
+    "description": "Span Panel REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:46:39.000Z",
+    "updatedAt": "2026-10-22T01:46:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2ba788ef-6d09-4eb9-a62d-9baa787316ee"
+  },
   "item": [
     {
-      "id": "02391dcc-69c8-4fb8-aa59-1ba0ee5e8113",
-      "name": "Islanding State",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "46bbcb83-bf47-49f9-8a92-77e8c219bffa",
-          "name": "Get Islanding State",
-          "request": {
-            "name": "Get Islanding State",
-            "description": {},
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "islanding-state"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "81e532a6-f20e-45e8-8904-969bd417c308",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "islanding-state"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "islanding-state",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Get Islanding State",
+                  "id": "60c80878-a070-4058-b11c-4aea03412354",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/islanding-state",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "islanding-state"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "f6465ea2-8fcb-49df-b325-00a67e044140",
+                      "name": "Successful Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/islanding-state",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "islanding-state"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"islanding_state\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:46:40.000Z",
+                      "updatedAt": "2026-10-22T01:46:40.000Z",
+                      "uid": "35240-f6465ea2-8fcb-49df-b325-00a67e044140"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:46:40.000Z",
+                  "updatedAt": "2026-10-22T01:46:40.000Z",
+                  "uid": "35240-60c80878-a070-4058-b11c-4aea03412354"
                 }
               ],
-              "body": "{\n  \"islanding_state\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "c4e2a1c1-988e-4d71-8dbd-71b718cf368b",
+              "createdAt": "2026-10-22T01:46:40.000Z",
+              "updatedAt": "2026-10-22T01:46:40.000Z",
+              "uid": "35240-c4e2a1c1-988e-4d71-8dbd-71b718cf368b"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "c4b3e8cb-6fd4-4a10-b444-b7c49781f742",
+          "createdAt": "2026-10-22T01:46:40.000Z",
+          "updatedAt": "2026-10-22T01:46:40.000Z",
+          "uid": "35240-c4b3e8cb-6fd4-4a10-b444-b7c49781f742"
         }
       ],
-      "event": []
+      "id": "be4c9c0b-e265-4c1d-bddb-f77282c165dc",
+      "createdAt": "2026-10-22T01:46:40.000Z",
+      "updatedAt": "2026-10-22T01:46:40.000Z",
+      "uid": "35240-be4c9c0b-e265-4c1d-bddb-f77282c165dc"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "/"
     }
-  ],
-  "info": {
-    "_postman_id": "6a64af51-f42d-4709-adb7-c6442dca9b64",
-    "name": "Span Auth Islanding State API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Span Panel REST API",
-      "type": "text/plain"
-    }
-  }
+  ]
 }
