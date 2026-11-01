@@ -1,4 +1,4 @@
-# SPAN (span-io)
+# SPAN
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,136 +66,184 @@
 
 SPAN is a San Francisco-based home energy technology company building smart electrical panels that replace traditional residential breaker boxes with a software-defined, controllable, and metered panel. SPAN Panel provides whole-home real-time power and energy metering, per-circuit monitoring and remote relay control, grid/islanding state management for whole-home backup with solar and energy storage, EV charging coordination via SPAN Drive, and a mobile app for energy management. As of the SPAN Panel firmware r202603 release (Q1 2026), SPAN exposes a public-beta on-premise SPAN API for software integrations between SPAN Panel and other devices on the home Local Area Network. The SPAN API is a real, documented HTTP + MQTT/Homie surface that runs directly on the panel — there is no cloud-hosted developer endpoint. The REST surface provides authentication, system status, Wi-Fi setup, panel state, per-circuit control, panel grid relay, energy storage state-of-energy, and emergency reconnect operations. The publish/subscribe surface uses the Electrification Bus (eBus) framework and Homie Convention over MQTT for streaming real-time panel state, per-circuit telemetry, and control of relays. SPAN API is licensed for personal, non-commercial use under MIT-0 for docs and example code; commercial / fleet use requires the separately licensed SPAN Fleet Manager.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/span-io/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/span-io/refs/heads/main/apis.yml)
+**Areas:** Energy · Home Energy · Electrification · Smart Panel · Electrical Panel · Home Automation · Solar · Energy Storage · EV Charging · Grid · Islanding · Backup Power
 
-## Scope
+## SPAN on APIs.io
 
-- **Type:** Provider
-- **Position:** Provider
-- **Access:** 3rd-Party
+Everything profiled for SPAN is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/span-io/](https://apis.io/providers/span-io/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (9)
 
-- Energy
-- Home Energy
-- Electrification
-- Smart Panel
-- Electrical Panel
-- Home Automation
-- Solar
-- Energy Storage
-- EV Charging
-- Grid
-- Islanding
-- Backup Power
-- Demand Response
-- IoT
-- MQTT
-- Homie
-- Electrification Bus
-- On-Premise
+- [SPAN eBus MQTT API](https://apis.io/apis/span-io/span-ebus-mqtt-api/) — Publish/subscribe streaming API hosted on SPAN Panel using the Electrification Bus (eBus) integration framework and the Homie Convention. SPAN Panel hosts…
+- [SPAN Auth API](https://apis.io/apis/span-io/span-io-auth-api/) — The Auth API from SPAN — 3 operation(s) for auth.
+- [SPAN Circuits API](https://apis.io/apis/span-io/span-io-circuits-api/) — The Circuits API from SPAN — 2 operation(s) for circuits.
+- [SPAN Islanding State API](https://apis.io/apis/span-io/span-io-islanding-state-api/) — The Islanding State API from SPAN — 1 operation(s) for islanding state.
+- [SPAN Panel API](https://apis.io/apis/span-io/span-io-panel-api/) — The Panel API from SPAN — 5 operation(s) for panel.
+- [SPAN Spaces API](https://apis.io/apis/span-io/span-io-spaces-api/) — The Spaces API from SPAN — 2 operation(s) for spaces.
+- [SPAN Status API](https://apis.io/apis/span-io/span-io-status-api/) — The Status API from SPAN — 1 operation(s) for status.
+- [SPAN Storage API](https://apis.io/apis/span-io/span-io-storage-api/) — The Storage API from SPAN — 2 operation(s) for storage.
+- [SPAN Wifi API](https://apis.io/apis/span-io/span-io-wifi-api/) — The Wifi API from SPAN — 2 operation(s) for wifi.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-25
-- **Modified:** 2026-05-25
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### AsyncAPI (1)
 
-### SPAN REST API
+Event-driven and webhook contracts.
 
-Local on-premise HTTP/JSON REST API hosted directly on SPAN Panel. The API exposes authentication (registering API clients and obtaining JWT access tokens), system status, Wi-Fi scan and connect, panel state, main meter, panel power, islanding state, per-circuit control, panel grid relay control, emergency reconnect, and energy storage state-of-energy and nice-to-have thresholds. All access is local-only on the home LAN; authentication uses HTTP Bearer JWT credentials minted by the panel itself. Available initially on SPAN Panel MAIN 32 with firmware r202603 and later, with rollout to MAIN 16 / MLO 24 / MAIN 40 / MLO 48 planned for the second half of 2026.
+- [SPAN eBus MQTT API](https://apis.io/asyncapis/span-io/span-ebus-asyncapi/)
 
-- **Human URL:** [https://github.com/spanio/SPAN-API-Client-Docs](https://github.com/spanio/SPAN-API-Client-Docs)
-- **Base URL:** `http://span-{serial-number}.local/api/v1`
+#### Event channels (11)
 
-#### Tags
+Individual events and webhooks the provider emits.
 
-- Energy
-- Home Energy
-- Smart Panel
-- REST
-- On-Premise
-- Circuits
-- Energy Storage
-- Grid
-- Islanding
+- [ebus/5/{serial}/circuits/{circuitId}/power](https://apis.io/channels/span-io/ebus-5-serial-circuits-circuitid-power/)
+- [ebus/5/{serial}/circuits/{circuitId}/relay-state](https://apis.io/channels/span-io/ebus-5-serial-circuits-circuitid-relay-state/)
+- [ebus/5/{serial}/circuits/{circuitId}/relay-state/set](https://apis.io/channels/span-io/ebus-5-serial-circuits-circuitid-relay-state-set/)
+- [ebus/5/{serial}/$description](https://apis.io/channels/span-io/ebus-5-serial-description/)
+- [ebus/5/{serial}/panel/grid](https://apis.io/channels/span-io/ebus-5-serial-panel-grid/)
+- [ebus/5/{serial}/panel/grid/set](https://apis.io/channels/span-io/ebus-5-serial-panel-grid-set/)
+- [ebus/5/{serial}/panel/islanding-state](https://apis.io/channels/span-io/ebus-5-serial-panel-islanding-state/)
+- [ebus/5/{serial}/panel/meter](https://apis.io/channels/span-io/ebus-5-serial-panel-meter/)
+- [ebus/5/{serial}/panel/power](https://apis.io/channels/span-io/ebus-5-serial-panel-power/)
+- [ebus/5/{serial}/$state](https://apis.io/channels/span-io/ebus-5-serial-state/)
+- [ebus/5/{serial}/storage/soe](https://apis.io/channels/span-io/ebus-5-serial-storage-soe/)
 
-#### Properties
+#### Agentic access (1)
 
-- [Documentation](https://github.com/spanio/SPAN-API-Client-Docs)
-- [Documentation](https://github.com/spanio/SPAN-API-Client-Docs/blob/main/README.md)
-- [OpenAPI](openapi/span-rest-api-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/span-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/span-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [OpenAPI](https://github.com/spanio/SPAN-API-Client-Docs/blob/main/specs/r202615/openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [JSON Schema](json-schema/span-mdns-services-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/span-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-### SPAN eBus MQTT API
+- [Span Io Agentic Access](https://apis.io/agentic-access/span-io/span-io-agentic-access/)
 
-Publish/subscribe streaming API hosted on SPAN Panel using the Electrification Bus (eBus) integration framework and the Homie Convention. SPAN Panel hosts an MQTT broker accessible over MQTTS (8883), WS, and WSS. Clients subscribe to `ebus/5/<serial>/...` topics to receive real-time panel state, per-circuit telemetry, energy storage state, and SPAN Drive integration data, and publish to `/set` topics to operate relays and control panel state. The broker enforces topic-level ACLs — full read access on `ebus/#`, write access limited to Homie `/set` control topics and to non-panel device subtrees under `ebus/5/`. Credentials are obtained via the REST authentication endpoint.
+#### JSON Schema (2)
 
-- **Human URL:** [https://github.com/spanio/SPAN-API-Client-Docs#span-api-interaction-models](https://github.com/spanio/SPAN-API-Client-Docs#span-api-interaction-models)
+The data models the API reads and writes.
 
-#### Tags
+- [Span Homie](https://apis.io/schemas/span-io/span-homie/)
+- [Span Mdns Services](https://apis.io/schemas/span-io/span-mdns-services/)
 
-- MQTT
-- Homie
-- Electrification Bus
-- eBus
-- Pub/Sub
-- Streaming
-- On-Premise
-- Energy
+#### JSON-LD (1)
 
-#### Properties
+Linked-data contexts for the provider's vocabulary.
 
-- [Documentation](https://github.com/spanio/SPAN-API-Client-Docs#publishsubscribe)
-- [Documentation](https://homieiot.github.io/specification/)
-- [Documentation](https://ebus.energy/)
-- [AsyncAPI](asyncapi/span-ebus-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-- [JSON Schema](json-schema/span-homie-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [Postman Collection](collections/span-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/span-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Span Context](https://apis.io/jsonld/span-io/span-context/)
 
-## Common Properties
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [SPAN Vocabulary](https://apis.io/vocabularies/span-io/span-io-vocabulary/)
+
+#### Collections (9)
+
+Postman and Open Collection request collections.
+
+- [Span Auth API](https://apis.io/collections/span-io/open-span-io-auth-api/)
+- [Span Auth Circuits API](https://apis.io/collections/span-io/open-span-io-circuits-api/)
+- [Span Auth Islanding State API](https://apis.io/collections/span-io/open-span-io-islanding-state-api/)
+- [Span Auth Panel API](https://apis.io/collections/span-io/open-span-io-panel-api/)
+- [Span Auth Spaces API](https://apis.io/collections/span-io/open-span-io-spaces-api/)
+- [Span Auth Status API](https://apis.io/collections/span-io/open-span-io-status-api/)
+- [Span Auth Storage API](https://apis.io/collections/span-io/open-span-io-storage-api/)
+- [Span Auth Wifi API](https://apis.io/collections/span-io/open-span-io-wifi-api/)
+- [Span](https://apis.io/collections/span-io/open-span-rest-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [SPAN — asyncapi rules](https://apis.io/rules/span-io/span-io-asyncapi-spectral-rules/)
+- [SPAN API Rules](https://apis.io/rules/span-io/span-io-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Span Io Authentication](https://apis.io/security/span-io/span-io-authentication/)
+- [Span Io Domain Security](https://apis.io/security/span-io/span-io-domain-security/)
+- [Span Io Vulnerability Disclosure](https://apis.io/security/span-io/span-io-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Span Io Plans Pricing](https://apis.io/plans/span-io/span-io-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Span Io Rate Limits](https://apis.io/rate-limits/span-io/span-io-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Span Io Finops](https://apis.io/finops/span-io/span-io-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.span.io)
-- [Portal](https://www.span.io)
 - [Documentation](https://github.com/spanio/SPAN-API-Client-Docs)
-- [Documentation](https://opensource.span.io/span-panel/)
-- [Product](https://www.span.io/smart-panel-product)
-- [Product](https://www.span.io/products/main-32)
-- [Product](https://www.span.io/drive)
-- [Product](https://www.span.io/app)
-- [Product](https://www.span.io/utilities)
-- [Blog](https://www.span.io/blog)
-- [Announcement Post](https://www.span.io/blog/introducing-span-api-and-span-home-on-premise-public-beta)
 - [Support](https://support.span.io/hc/en-us)
-- [Terms of Service](https://www.span.io/terms-of-service)
-- [Privacy Policy](https://www.span.io/privacy-policy)
-- [GitHub Organization](https://github.com/spanio)
-- [Repository](https://github.com/spanio/SPAN-API-Client-Docs)
-- [Forum](https://github.com/spanio/SPAN-API-Client-Docs/discussions)
-- [Issues](https://github.com/spanio/SPAN-API-Client-Docs/issues)
 - [Changelog](https://github.com/spanio/SPAN-API-Client-Docs/blob/main/CHANGELOG.md)
-- [License](https://github.com/spanio/SPAN-API-Client-Docs/blob/main/LICENSE)
-- [SDK](https://github.com/SpanPanel/span-panel-api)
-- [SDK](https://github.com/SpanPanel/Span)
-- [SDK](https://github.com/SpanPanel/simulator)
-- [Tool](https://github.com/spanio/SPAN-API-Client-Docs/tree/main/scripts)
-- [Twitter](https://twitter.com/span_io)
-- [LinkedIn](https://www.linkedin.com/company/span-io)
-- [YouTube](https://www.youtube.com/@span_io)
-- [Careers](https://www.span.io/careers)
-- [Contact](https://www.span.io/contact)
-- [Plans](plans/span-io-plans-pricing.yml)
-- [Rate Limits](rate-limits/span-io-rate-limits.yml)
-- [Fin Ops](finops/span-io-finops.yml)
-- [Features](undefined)
+- [Blog](https://www.span.io/blog)
+- [Terms of service](https://www.span.io/terms-of-service)
+- [Privacy policy](https://www.span.io/privacy-policy)
+- [GitHub](https://github.com/spanio)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 38.7** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 56.9 |
+| Contract governance | 13.6 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 52.4 |
+| Access clarity | 18.4 |
+
+**Agent readiness 24.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 22.1** — Energy & Utilities
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/span-io/](https://apis.io/providers/span-io/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for SPAN: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/span-io/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
